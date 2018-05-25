@@ -36,7 +36,7 @@ public class DataManagerImplTest extends ServiceTest{
 		assertNotNull(dataManager.getDepartmentList());
 		//logger.info("Department list: "+dataManager.getDepartmentList());
 		assertTrue(CollectionUtils.isNotEmpty(dataManager.getDepartmentList()));
-		assertEquals(6,dataManager.getDepartmentList().size());
+		assertEquals(12,dataManager.getDepartmentList().size());
 		
 		assertNotNull(dataManager.getCompanyList());
 		//logger.info("Company list: "+dataManager.getCompanyList());

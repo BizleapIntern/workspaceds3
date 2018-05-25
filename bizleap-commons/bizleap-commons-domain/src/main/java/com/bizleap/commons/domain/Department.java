@@ -23,6 +23,13 @@ public class Department extends AbstractEntity {
 	
 	@OneToMany(mappedBy="workForDepartment", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Employee> employeeList;
+	
+	@OneToMany(mappedBy="parentDepartment", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Department> subDepartmentList;
+	
+	@ManyToOne
+	@JoinColumn(name="parentDepartmentId")
+	private Department parentDepartment;
 
 	public Department() {
 		super();
@@ -32,6 +39,22 @@ public class Department extends AbstractEntity {
 		super(boId);
 	}
 	
+	public List<Department> getSubDepartmentList() {
+		return subDepartmentList;
+	}
+
+	public void setSubDepartmentList(List<Department> subDepartmentList) {
+		this.subDepartmentList = subDepartmentList;
+	}
+
+	public Department getParentDepartment() {
+		return parentDepartment;
+	}
+
+	public void setParentDepartment(Department parentDepartment) {
+		this.parentDepartment = parentDepartment;
+	}
+
 	public Company getWorkForCompany() {
 		return workForCompany;
 	}
@@ -57,13 +80,21 @@ public class Department extends AbstractEntity {
 			department.setEmail(tokens[2]);
 			department.setPhone(tokens[3]);
 			department.setWorkForCompany(new Company(tokens[4]));
+			try {
+				department.setParentDepartment(new Department(tokens[5]));
+			}catch(Exception ArrayIndexOutOfBoundsException) {
+				department.setParentDepartment(null);
+			}
 			return department;
 	}
 
 	public String toString() {
+		String parentDepartmentBoId=parentDepartment==null?" ":parentDepartment.getBoId();
+		String workForCompanyBoId=workForCompany==null?" ":workForCompany.getBoId();
 		return new ToStringBuilder(this)
 				.appendSuper(super.toString())
-				.append("workForCompany",workForCompany.getBoId())
+				.append("workForCompany",workForCompanyBoId)
+				.append("parentDepartment",parentDepartmentBoId)
 				.toString();
 	}
 }
