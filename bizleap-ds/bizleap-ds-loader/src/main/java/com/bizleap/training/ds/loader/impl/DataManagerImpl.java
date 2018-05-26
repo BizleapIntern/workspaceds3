@@ -15,9 +15,12 @@ import com.bizleap.training.ds.loader.AssociationMapper;
 import com.bizleap.training.ds.loader.CompanySaver;
 import com.bizleap.training.ds.loader.DataLoader;
 import com.bizleap.training.ds.loader.DataManager;
+import com.bizleap.training.ds.loader.DepartmentSaver;
+import com.bizleap.training.ds.service.DepartmentService;
 
 @Service("dataManager")
 public class DataManagerImpl implements DataManager {
+	
 	List<Employee> employeeList;
 	List<Company> companyList;
 	List<Department> departmentList;
@@ -30,6 +33,8 @@ public class DataManagerImpl implements DataManager {
 	
 	@Autowired
 	private CompanySaver companySaver;
+	@Autowired
+	private DepartmentSaver departmentSaver;
 	
 	public void load() throws IOException, ServiceUnavailableException {
 		//load the data
@@ -38,7 +43,13 @@ public class DataManagerImpl implements DataManager {
 		associationMapper.buildAssociations();
 		
 		companySaver.setCompanyList(companyList);
-		companySaver.savePass1();
+	     companySaver.savePass1();
+	     
+		departmentSaver.setDepartmentList(departmentList);
+	    departmentSaver.savePass1();
+		departmentSaver.savePass2();
+	    
+		
 	}
 
 	public void print() {

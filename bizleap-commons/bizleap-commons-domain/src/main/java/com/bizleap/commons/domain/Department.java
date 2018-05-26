@@ -21,6 +21,13 @@ public class Department extends AbstractEntity {
 	@JoinColumn(name="companyId")
 	private Company workForCompany;
 	
+	@ManyToOne
+	@JoinColumn(name="parentDepartmentId")
+	private Department parentDepartment;
+	
+	@OneToMany(mappedBy="parentDepartment", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Department> subdepartmentList;
+	
 	@OneToMany(mappedBy="workForDepartment", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Employee> employeeList;
 
@@ -57,13 +64,40 @@ public class Department extends AbstractEntity {
 			department.setEmail(tokens[2]);
 			department.setPhone(tokens[3]);
 			department.setWorkForCompany(new Company(tokens[4]));
+			try{
+				department.setParentDepartment(new Department (tokens[5]));
+			}catch (Exception ArrayIndexOutOfBoundException) {
+			department.setParentDepartment(null);
+			}
 			return department;
 	}
 
 	public String toString() {
+		String parentDepartmentBoID=parentDepartment!=null? parentDepartment.getBoId():" ";
+		String workForCompanyBoId=workForCompany!=null? workForCompany.getBoId():"";
+		
 		return new ToStringBuilder(this)
 				.appendSuper(super.toString())
-				.append("workForCompany",workForCompany.getBoId())
+				.append("workForCompany",workForCompanyBoId)
+				.append("Work for Department ",parentDepartmentBoID)
 				.toString();
+	}
+
+	public Department getParentDepartment() {
+		return parentDepartment;
+	}
+
+	public void setParentDepartment(Department parentDepartment) {
+		this.parentDepartment = parentDepartment;
+	}
+
+	public List<Department> getSubdepartmentList() {
+		if(subdepartmentList==null)
+			this.subdepartmentList=new ArrayList<Department>();
+		return subdepartmentList;
+	}
+
+	public void setSubdepartmentList(List<Department> subdepartmentList) {
+		this.subdepartmentList = subdepartmentList;
 	}
 }

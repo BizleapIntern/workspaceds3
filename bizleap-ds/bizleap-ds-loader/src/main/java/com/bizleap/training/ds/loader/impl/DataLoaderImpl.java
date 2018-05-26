@@ -119,6 +119,6 @@ public class DataLoaderImpl implements DataLoader {
 		printer.line("Company Loaded: "+dataManager.getCompanyList().size());
 		
 		loadDepartment("department.txt");
-		printer.line("Department Loaded: "+dataManager.getEmployeeList().size());
+		printer.line("Department Loaded: "+dataManager.getDepartmentList().size());
 	}
 }

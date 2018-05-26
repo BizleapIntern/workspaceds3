@@ -25,6 +25,7 @@ public class CompanySaverImpl implements CompanySaver {
 	@Override
 	public void savePass1() throws ServiceUnavailableException, IOException {
 		int count=0;
+		logger.info("Total company size :"+ getCompanyList().size());
 		for(Company company:getCompanyList()) {
 			companyService.saveCompany(company);
 			count++;

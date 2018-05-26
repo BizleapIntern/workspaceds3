@@ -27,10 +27,9 @@ public class CompanyServiceImplTest extends ServiceTest {
 	
 	static Logger logger = Logger.getLogger(CompanyServiceImplTest.class);
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testFindByCompanyBoId() throws ServiceUnavailableException, IOException {
-		
 		assertNotNull(companyService.findByCompanyBoId("COMP02"));
 		//logger.info("Company list: " + companyService.findByCompanyBoId("COMP02"));
 		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP02")));
@@ -44,7 +43,7 @@ public class CompanyServiceImplTest extends ServiceTest {
 		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP02",ObjectFullnessLevel.FULL)));	
 	}
 
-   // @Ignore
+    @Ignore
 	@Test
 	public void testGetAllCompany() throws IOException, ServiceUnavailableException {
 		assertEquals(3, companyService.getAllCompany().size());

@@ -23,7 +23,7 @@ public class DataManagerImplTest extends ServiceTest{
 	
 	static Logger logger=Logger.getLogger(DataManagerImplTest.class);
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void testLoad() throws IOException,ServiceUnavailableException {		
 		dataManager.load();
@@ -36,7 +36,7 @@ public class DataManagerImplTest extends ServiceTest{
 		assertNotNull(dataManager.getDepartmentList());
 		//logger.info("Department list: "+dataManager.getDepartmentList());
 		assertTrue(CollectionUtils.isNotEmpty(dataManager.getDepartmentList()));
-		assertEquals(6,dataManager.getDepartmentList().size());
+		assertEquals(12,dataManager.getDepartmentList().size());
 		
 		assertNotNull(dataManager.getCompanyList());
 		//logger.info("Company list: "+dataManager.getCompanyList());

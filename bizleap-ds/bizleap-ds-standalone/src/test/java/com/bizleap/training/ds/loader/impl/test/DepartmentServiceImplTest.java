@@ -24,7 +24,7 @@ public class DepartmentServiceImplTest extends ServiceTest {
 
 	static Logger logger = Logger.getLogger(DepartmentServiceImplTest.class);
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testFindByDepartmentyBoId() throws ServiceUnavailableException {
 
@@ -33,10 +33,10 @@ public class DepartmentServiceImplTest extends ServiceTest {
 		assertTrue(CollectionUtils.isNotEmpty(departmentService.findByDepartmentBoId("DEPT03")));
 	}
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testGetAllDepartment() throws IOException, ServiceUnavailableException {
-		assertEquals(6, departmentService.getAllDepartment().size());
+		assertEquals(12, departmentService.getAllDepartment().size());
 		//logger.info("Employee Count : "+employeeService.getAllEmployee().size());
 	}
 }
