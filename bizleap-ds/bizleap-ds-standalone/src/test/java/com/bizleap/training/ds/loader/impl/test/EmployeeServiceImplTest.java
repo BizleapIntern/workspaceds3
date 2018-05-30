@@ -24,7 +24,7 @@ public class EmployeeServiceImplTest extends ServiceTest {
 
 	static Logger logger = Logger.getLogger(EmployeeServiceImplTest.class);
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testFindByEmployeeyBoId() throws ServiceUnavailableException {
 
@@ -33,7 +33,7 @@ public class EmployeeServiceImplTest extends ServiceTest {
 		assertTrue(CollectionUtils.isNotEmpty(employeeService.findByEmployeeBoId("PER03")));
 	}
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testGetAllEmployee() throws IOException, ServiceUnavailableException {
 		assertEquals(8, employeeService.getAllEmployee().size());

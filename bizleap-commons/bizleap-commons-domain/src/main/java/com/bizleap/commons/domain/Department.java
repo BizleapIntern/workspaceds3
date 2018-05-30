@@ -23,7 +23,18 @@ public class Department extends AbstractEntity {
 	
 	@OneToMany(mappedBy="workForDepartment", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Employee> employeeList;
+	
+	public void setEmployeeList(List<Employee> employeeList) {
+		this.employeeList = employeeList;
+	}
 
+	@ManyToOne
+	@JoinColumn(name="parentDepartmentId")
+	private Department parentDepartment;
+
+	@OneToMany(mappedBy="parentDepartment",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	private List<Department> subDepartmentList;
+	
 	public Department() {
 		super();
 	}
@@ -46,24 +57,48 @@ public class Department extends AbstractEntity {
 		return employeeList;
 	}
 
-	public void setEmployeeList(List<Employee> employeeList) {
+	public void setDepartmentList(List<Employee> employeeList) {
 		this.employeeList = employeeList;
 	}
+
+	public List<Department> getSubDepartmentList() {
+		return subDepartmentList;
+	}
+
+	public void setSubDepartmentList(List<Department> subDepartmentList) {
+		this.subDepartmentList = subDepartmentList;
+	}
 	
+	public Department getParentDepartment() {
+		return parentDepartment;
+	}
+
+	public void setParentDepartment(Department parentDepartment) {
+		this.parentDepartment = parentDepartment;
+	}
+
 	public static Department parseDepartment(String line) {
-			String[] tokens=line.split(",");
-			Department department=new Department(tokens[0]);
-			department.setName(tokens[1]);
-			department.setEmail(tokens[2]);
-			department.setPhone(tokens[3]);
-			department.setWorkForCompany(new Company(tokens[4]));
-			return department;
+		String[] tokens = line.split(",");
+		Department department = new Department(tokens[0]);
+		department.setName(tokens[1]);
+		department.setEmail(tokens[2]);
+		department.setPhone(tokens[3]);
+		department.setWorkForCompany(new Company(tokens[4]));
+		try {
+			department.setParentDepartment(new Department(tokens[5]));
+		} catch (Exception ArrayIndexOutOfBoundException) {
+			department.setParentDepartment(null);
+		}
+		return department;
 	}
 
 	public String toString() {
+		String parentDepartmentBoId=parentDepartment!=null?parentDepartment.getBoId():"";
+		String workForCompanyBoId=workForCompany!=null?workForCompany.getBoId():"";
 		return new ToStringBuilder(this)
 				.appendSuper(super.toString())
-				.append("workForCompany",workForCompany.getBoId())
+				.append("workForCompany",workForCompanyBoId)
+				.append("parentDepartment",parentDepartmentBoId)
 				.toString();
 	}
 }

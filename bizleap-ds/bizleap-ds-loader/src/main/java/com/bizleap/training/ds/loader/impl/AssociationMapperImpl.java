@@ -20,13 +20,15 @@ public class AssociationMapperImpl implements AssociationMapper {
 	List<Employee> employeeList;
 	List<Company> companyList;
 	List<Department> departmentList;
+	List<Department> subDepartmentList;
 	
+
 	@Autowired
 	private DataManager dataManager;
 	private static Logger logger = Logger.getLogger(AssociationMapperImpl.class);
 	private static Printer printer = new Printer(logger);
 	 
-	/*private void addCompanyToEmployee(Employee employee) {
+	/*private void addComRpanyToEmployee(Employee employee) {
 		
 		if(employee==null)
 			return;
@@ -84,34 +86,47 @@ public class AssociationMapperImpl implements AssociationMapper {
 		//handleLinkageError("Employee in company cannot be linked!", company);
 	}
 	
-	 
-		private void addDepartmentToEmployee(Employee employee) {
-			
-			if(employee==null)
-				return;
-			
-			for(Department department:dataManager.getDepartmentList()) {
-				if(department.sameBoId(employee.getWorkForDepartment())) {
-					employee.setWorkForDepartment(department);
-					return;
-				}
-			}
-			handleLinkageError("Department in employee cannot be linked!",employee,employee.getWorkForDepartment());
-		}
-		
-		private void addEmployeeToDepartment(Department department) {
-		//add employeeList to company first
-		if(department==null) {
+	private void addDepartmentToEmployee(Employee employee) {
+
+		if (employee == null) {
 			return;
 		}
 		
-		for(Employee employee:dataManager.getEmployeeList()) {
-			if(employee.getWorkForDepartment().sameBoId(department)) {
-				department.getEmployeeList().add(employee);
-				//return;
+		for (Department department : dataManager.getDepartmentList()) {
+			if (department.sameBoId(employee.getWorkForDepartment())) {
+				employee.setWorkForDepartment(department);
+				return;
 			}
 		}
-		//handleLinkageError("Employee in company cannot be linked!", company);
+		handleLinkageError("Department in employee cannot be linked!", employee, employee.getWorkForDepartment());
+	}
+
+	private void addEmployeeToDepartment(Department department) {
+		// add employeeList to company first
+		if (department == null) {
+			return;
+		}
+
+		for (Employee employee : dataManager.getEmployeeList()) {
+			if (employee.getWorkForDepartment().sameBoId(department)) {
+				department.getEmployeeList().add(employee);
+				// return;
+			}
+		}
+		// handleLinkageError("Employee in company cannot be linked!", company);
+	}
+	
+	private void addSubDepartmentListToParentDepartment(Department department) {
+		List<Department> subDepartmentList=new ArrayList<Department>();
+		if(department.getParentDepartment()==null) {
+			for(Department departmentFromFile:dataManager.getDepartmentList()) {
+				if(department.isSameBoId(departmentFromFile.getParentDepartment())) {
+					subDepartmentList.add(departmentFromFile);
+				}
+			}
+			logger.info(subDepartmentList+"\n");
+			department.setSubDepartmentList(subDepartmentList);
+		}
 	}
 
 	public List<Employee> getEmployeeList() {
@@ -134,14 +149,20 @@ public class AssociationMapperImpl implements AssociationMapper {
 		this.companyList = companyList;
 	}
 	
-	
-	
 	public List<Department> getDepartmentList() {
 		return departmentList;
 	}
 
 	public void setDepartmentList(List<Department> departmentList) {
 		this.departmentList = departmentList;
+	}
+	
+	public List<Department> getSubDepartmentList() {
+		return subDepartmentList;
+	}
+
+	public void setSubDepartmentList(List<Department> subDepartmentList) {
+		this.subDepartmentList = subDepartmentList;
 	}
 
 	private void processEmployeeAssociations() {
@@ -160,6 +181,7 @@ public class AssociationMapperImpl implements AssociationMapper {
 		for(Department department:dataManager.getDepartmentList()) {
 			addEmployeeToDepartment(department);
 			addCompanyToDepartment(department);
+			addSubDepartmentListToParentDepartment(department);
 		}
 	}
 	
