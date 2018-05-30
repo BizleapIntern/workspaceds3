@@ -22,7 +22,7 @@ public class DataManagerImpl implements DataManager {
 	List<Employee> employeeList;
 	List<Company> companyList;
 	List<Department> departmentList;
-	
+
 	@Autowired
 	private DataLoader dataLoader;
 	
@@ -41,11 +41,12 @@ public class DataManagerImpl implements DataManager {
 		//build the association
 		associationMapper.buildAssociations();
 		
-		/*companySaver.setCompanyList(companyList);
-		companySaver.savePass1();*/
-		
 		departmentSaver.setDepartmentList(departmentList);
 		departmentSaver.savePass1();
+		departmentSaver.savePass2();
+		
+		companySaver.setCompanyList(companyList);
+		companySaver.savePass1();
 	}
 
 	public void print() {

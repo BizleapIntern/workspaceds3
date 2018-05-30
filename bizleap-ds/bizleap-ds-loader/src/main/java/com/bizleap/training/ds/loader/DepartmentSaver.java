@@ -10,5 +10,8 @@ public interface DepartmentSaver {
 	public void savePass1() throws ServiceUnavailableException, IOException;
 	public void savePass2() throws ServiceUnavailableException, IOException;
 	public void setDepartmentList(List<Department> departmentList);
+	public Department getDepartmentFromDB(Department department) throws ServiceUnavailableException;
+	public Department getDepartmentFromFile(Department department);
 	public List<Department> getDepartmentList();
+	public List<Department> toDBList(List<Department> departmentList) throws ServiceUnavailableException;
 }

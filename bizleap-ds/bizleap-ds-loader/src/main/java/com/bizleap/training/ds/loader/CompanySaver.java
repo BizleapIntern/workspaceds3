@@ -10,4 +10,5 @@ public interface CompanySaver {
 	
 	public void savePass1() throws ServiceUnavailableException, IOException;
 	public void setCompanyList(List<Company> companyList);
+	public List<Company> getCompanyList();
 }
