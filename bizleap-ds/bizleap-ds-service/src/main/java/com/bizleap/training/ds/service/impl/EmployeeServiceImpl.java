@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import com.bizleap.commons.domain.Company;
 import com.bizleap.commons.domain.Employee;
 import com.bizleap.commons.domain.enums.EntityType;
-import com.bizleap.commons.domain.enums.ObjectFullnessLevel;
 import com.bizleap.commons.domain.exception.ServiceUnavailableException;
 import com.bizleap.training.ds.service.EmployeeService;
 import com.bizleap.training.ds.service.dao.EmployeeDao;

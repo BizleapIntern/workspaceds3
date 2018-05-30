@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.log4j.Logger;
@@ -14,7 +13,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.bizleap.commons.domain.Company;
 import com.bizleap.commons.domain.enums.ObjectFullnessLevel;
 import com.bizleap.commons.domain.exception.ServiceUnavailableException;
 import com.bizleap.training.ds.service.CompanyService;
@@ -27,7 +25,7 @@ public class CompanyServiceImplTest extends ServiceTest {
 	
 	static Logger logger = Logger.getLogger(CompanyServiceImplTest.class);
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void testFindByCompanyBoId() throws ServiceUnavailableException, IOException {
 		
@@ -44,7 +42,7 @@ public class CompanyServiceImplTest extends ServiceTest {
 		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP02",ObjectFullnessLevel.FULL)));	
 	}
 
-   // @Ignore
+    @Ignore
 	@Test
 	public void testGetAllCompany() throws IOException, ServiceUnavailableException {
 		assertEquals(3, companyService.getAllCompany().size());

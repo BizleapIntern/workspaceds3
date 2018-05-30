@@ -7,7 +7,6 @@ import com.bizleap.commons.domain.Company;
 import com.bizleap.commons.domain.exception.ServiceUnavailableException;
 
 public interface CompanySaver {
-	
 	public void savePass1() throws ServiceUnavailableException, IOException;
 	public void setCompanyList(List<Company> companyList);
 }
