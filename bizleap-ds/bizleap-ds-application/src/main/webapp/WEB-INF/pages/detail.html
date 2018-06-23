@@ -1,0 +1,2848 @@
+<div id="detail-table" class="hide">
+	<div th:if="${employee!=NULL}" id="employee-detail-table" class="hide">
+		<table>
+			<col width="100px" />
+			<col width="250px" />
+			<col width="150px" />
+			<tr th:if="${employee!='INVALID'}" th:value="${employee.id}"
+				id="detail-employee-id">
+				<td rowspan="3" class="detail-logo"><img
+					th:src="@{/resources/img/profile.png}" /></td>
+				<td id="detail-employee-name"><span th:text="${employee.title}"
+					id="employee_title"></span> <span th:text="${employee.firstName}"
+					id="employee_firstName"></span> <span
+					th:text="${employee.middleName}" id="employee_middleName"></span> <span
+					th:text="${employee.lastName}" id="employee_lastName"></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr th:if="${employee!='INVALID'}">
+				<td th:text="${employee.boId}" id="detail-employee-boId">SALEYGN0001</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td th:text="${employee.position}" id="detail-employee-position">Sales
+					Manager</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr th:if="${employee!='INVALID'}">
+				<td class="detail-description">N.R.C:</td>
+				<td th:text="${employee.nrc}" id="detail-employee-nrc">7/PaTaNa(N)102041</td>
+				<td class="detail-description">Date of Birth:</td>
+				<td th:if="${employee.dateOfBirth!=NULL}"
+					th:text="${#dates.format(employee.dateOfBirth,'dd/MM/YYYY')}"
+					id="detail-employee-date-of-birth">10-9-1984</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Employment Date:</td>
+				<td th:if="${employee.entranceDate!=NULL}"
+					th:text="${#dates.format(employee.entranceDate,'dd/MM/YYYY')}"
+					id="detail-employee-entrance-date">1/1/2014</td>
+				<td th:if="${employee.entranceDate==NULL}"></td>
+				<td class="detail-description">Education:</td>
+				<td th:text="${employee.education}" id="detail-employee-education">Ph.D(IT)</td>
+			</tr>
+			<tr>
+				<td class="detail-description">ATM:</td>
+				<td th:text="${employee.atm}" id="detail-employee-atm">0002119010937355</td>
+				<td class="detail-description">Location Name:</td>
+				<td th:text="${employee.location.name}"
+					id="detail-employee-location">Yangon</td>
+				<span id="detail-employee-location-id"
+					th:text="${employee.location.boId}" class="hide"></span>
+				<span id="detail-employee-location-type"
+					th:text="${employee.location.type.toString()}" class="hide"></span>
+			</tr>
+			<tr>
+				<td class="detail-description">Base Salary:</td>
+				<td th:text="${employee.baseSalary}" id="detail-employee-baseSalary">100000</td>
+				<td class="detail-description">PutASide Amount:</td>
+				<td th:text="${employee.putAside}"
+					id="detail-employee-putaSideAmount">100000</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Phone Number:</td>
+				<td th:text="${employee.phoneNumber}"
+					id="detail-employee-phone-number">09420042458</td>
+				<td class="detail-description">Email:</td>
+				<td th:text="${employee.email}" id="detail-employee-email">kyarnyoaye@bizleap.com</td>
+			</tr>
+
+			<tr>
+				<td class="detail-description">Address Line1:</td>
+				<td><span th:text="${employee.address.addressLine1}"
+					id="detail-employee-address-line1"></span> <span
+					th:text="${employee.address.city}" id="detail-employee-city"></span>
+					<span th:text="${employee.address.state}"
+					id="detail-employee-state"></span> <span
+					th:text="${employee.address.country}" id="detail-employee-country"></span>
+					<span th:text="${employee.address.postalCode}"
+					id="detail-employee-postalCode"></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Address Line2:</td>
+				<td><span th:text="${employee.address.addressLine2}"
+					id="detail-employee-address-line2"></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<!-- for add compensation -->
+			<tr>
+				<td colspan="4"><span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.codeAllowance}"
+					id="compensation_codeAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.foodAllowance}"
+					id="compensation_foodAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.houseAttendanceAllowance}"
+					id="compensation_houseAttendanceAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.onTimeAllowance}"
+					id="compensation_onTimeAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.goodAttendanceAllowance}"
+					id="compensation_goodAttendanceAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.commuteAllowance}"
+					id="compensation_commuteAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.codeExamAllowance}"
+					id="compensation_codeExamAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.codeWrongFine}"
+					id="compensation_codeWrongFine" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.priceWrongFine}"
+					id="compensation_priceWrongFine" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.customerSignatureFine}"
+					id="compensation_customerSignatureFine" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.salesQuantityCommission}"
+					id="compensation_salesQuantityCommission" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.cashDownSalesQuantityCommission}"
+					id="compensation_cashDownSalesQuantityCommission" class="hide"></span>
+
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.putASideSalesQuantityCommmission}"
+					id="compensation_putASideSalesQuantityCommmission" class="hide"></span>
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.salesRevenueCommission}"
+					id="compensation_salesRevenueCommission" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.cashDownSalesRevenueCommission}"
+					id="compensation_cashDownSalesRevenueCommission" class="hide"></span>
+
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.putAsideSalesRevenueCommission}"
+					id="compensation_putAsideSalesRevenueCommission" class="hide"></span>
+
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.salesSwamQuantityCommission}"
+					id="compensation_salesSwamQuantityCommission" class="hide"></span>
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.cashDownSalesSwamQuantityCommission}"
+					id="compensation_cashDownSalesSwamQuantityCommission" class="hide"></span>
+
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.putASideSalesSwamQuantityCommission}"
+					id="compensation_putASideSalesSwamQuantityCommmission" class="hide"></span>
+
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.quarterlySalesRevenueCommission}"
+					id="compensation_quarterlySalesRevenueCommission" class="hide"></span>
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.extraSalesRevenueCommission}"
+					id="compensation_extraSalesRevenueCommission" class="hide"></span>
+
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.salesRevenueDebitCollectionCommission}"
+					id="compensation_salesRevenueDebitCollectionCommission"
+					class="hide"></span> <span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.debitDuePenalty}"
+					id="compensation_debitDuePenalty" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.fieldGoingPerDayAllowance}"
+					id="compensation_fieldGoingPerDayAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.downTownMarketAllowance}"
+					id="compensation_downTownMarketAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.monthlySaleAmountCommissionForShop}"
+					id="compensation_monthlySaleAmountCommissionForShop" class="hide"></span>
+					<span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.cashierCommission}"
+					id="compensation_cashierCommission" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.firstAwardAllowance}"
+					id="compensation_firstAwardAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.secondAwardAllowance}"
+					id="compensation_secondAwardAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.thirdAwardAllowance}"
+					id="compensation_thirdAwardAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.auditAllowance}"
+					id="compensation_auditAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.promotionSalesQuantityCommissionForRetail}"
+					id="compensation_promotionSalesQuantityCommissionForRetail"
+					class="hide"></span> <span th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.overTimeAllowance}"
+					id="compensation_overTimeAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.absentDayFine}"
+					id="compensation_absentDayFine" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.zayCarFieldTripAllowance}"
+					id="compensation_zayCarFieldTripAllowance" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.commissionPercentage}"
+					id="compensation_commissionPercentage" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.putAsideValue}"
+					id="compensation_putAsideValue" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.returnPenalty}"
+					id="compensation_returnPenalty" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.producedValue}"
+					id="compensation_producedValue" class="hide"></span> <span
+					th:if="${employee.compensation!=NULL}"
+					th:text="${employee.compensation.returnPercentage}"
+					id="compensation_returnPercentage" class="hide"></span></td>
+			</tr>
+		</table>
+	</div>
+	<div th:if="${customer!=NULL}" id="customer-detail-table" class="hide">
+		<table width="600px">
+			<col width="100px" />
+			<col width="250px" />
+			<col width="150px" />
+
+			<tr th:if="${customer!='INVALID'}" th:value="${customer.boId}"
+				id="detail-customer-id">
+				<td rowspan="3" class="detail-logo"><img
+					th:src="@{/resources/img/profile.png}" /></td>
+				<td id="detail-customer-name"><span th:text="${customer.title}">Dr.</span>
+					<span th:text="${customer.firstName}">Kyar</span> <span
+					th:text="${customer.middleName}">Nyo</span> <span
+					th:text="${customer.lastName}">Aye</span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr th:if="${customer!='INVALID'}">
+				<td th:text="${customer.boId}" id="detail-customer-boId">SALEYGN0001</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr th:if="${customer!='INVALID'}">
+				<td th:text="${customer.customerType}"
+					id="detail-customer-customerType"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="detail-description">N.R.C:</td>
+				<td th:text="${customer.nrc}" id="detail-customer-nrc">7/PaTaNa(N)102041</td>
+				<td class="detail-description">Date of Birth:</td>
+				<td th:if="${customer.dateOfBirth!=NULL}"
+					th:text="${#dates.format(customer.dateOfBirth,'dd/MM/YYYY')}"
+					id="detail-customer-date-of-birth">10-9-1984</td>
+
+			</tr>
+			<tr>
+				<td class="detail-description">Location Name:</td>
+				<td th:text="${customer.location.name}"
+					id="detail-customer-location">Yangon</td>
+				<td><span id="detail-customer-location-id"
+					th:text="${customer.location.boId}" class="hide"></span></td>
+				<td class="hide" th:text="${customer.location.type}"
+					id="detail-location-type"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Phone Number:</td>
+				<td th:text="${customer.phoneNumber}"
+					id="detail-customer-phone-number">09420042458</td>
+				<td class="detail-description">Email:</td>
+				<td th:text="${customer.email}" id="detail-customer-email">kyarnyoaye@bizleap.com</td>
+			</tr>
+			<tr class="hide"
+				th:if="${customer.getPurchaseOrderForOpening()!=null}"
+				id="isOpening-DateandAmount">
+				<td class="hide" id="purchaseOrder-openingDate"
+					th:if="${customer.getPurchaseOrderForOpening()!=null}"
+					th:text="${#dates.format(customer.getPurchaseOrderForOpening().date,'dd/MM/YYYY')}"></td>
+				<td class="hide" id="purchaseOrder-openingNetAmount"
+					th:if="${customer.getPurchaseOrderForOpening()!=null}"
+					th:text="${customer.getPurchaseOrderForOpening().netAmount}"></td>
+				<td class="hide" id="purchaseOrder-openingRemark"
+					th:if="${customer.getPurchaseOrderForOpening()!=null}"
+					th:text="${customer.getPurchaseOrderForOpening().remark}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Address Line1:</td>
+				<td><span th:text="${customer.address.addressLine1}"
+					id="detail-customer-address-line1"></span> <span
+					th:text="${customer.address.city}" id="detail-customer-city"></span>
+					<span th:text="${customer.address.state}"
+					id="detail-customer-state"></span> <span
+					th:text="${customer.address.country}" id="detail-customer-country"></span>
+					<span th:text="${customer.address.postalCode}"
+					id="detail-customer-postalCode"></span></td>
+				<td class="detail-description">Address Line2:</td>
+				<td><span th:text="${customer.address.addressLine2}"
+					id="detail-customer-address-line2"></span></td>
+			</tr>
+		</table>
+		<fieldset>
+			<legend>Sales List</legend>
+			<table width="600px" border="solid">
+				<col width="50px" />
+				<col width="100px" />
+				<col width="50px" />
+				<col width="100px" />
+				<col width="100px" />
+				<col width="100px" />
+				<col width="100px" />
+				<thead>
+					<tr>
+						<td class="hide"></td>
+						<td class="hide"></td>
+						<td class="hide"></td>
+						<td>Date</td>
+						<td>Payment Date</td>
+						<td>Invoice No.</td>
+						<td>Debit</td>
+						<td>Credit</td>
+						<td>Discount</td>
+						<td>Commission</td>
+						<td>Balance</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr
+						th:each="purchaseOrder : ${customer.getPurchaseOrderListAfterSorting()}"
+						th:attr="id=${purchaseOrder.boId}">
+						<td class="hide"><span
+							th:attr="id=${purchaseOrder.boId+'routeId'}"
+							th:text="${purchaseOrder.routeId}"></span></td>
+						<td th:if="${purchaseOrder.route!=null}" class="hide"><span
+							th:attr="id=${purchaseOrder.boId+'startdate'}"
+							th:text="${purchaseOrder.route.startDate}">1/1/2015</span></td>
+						<td th:if="${purchaseOrder.route!=null}" class="hide"><span
+							th:attr="id=${purchaseOrder.boId+'enddate'}"
+							th:text="${purchaseOrder.route.endDate}">1/1/2015</span></td>
+						<td th:if="${purchaseOrder.route==null}" class="hide"></td>
+						<td th:if="${purchaseOrder.route==null}" class="hide"></td>
+						<td><span th:attr="id=${purchaseOrder.boId+'date'}"
+							th:text="${purchaseOrder.date}">1/1/2015</span></td>
+						<td th:if="${purchaseOrder.getLastPaymentDate()!=null}">
+							<!--  span th:each="payment:${purchaseOrder.paymentList}" th:text="${payment.date}">payment date</span-->
+							<span th:text="${purchaseOrder.getLastPaymentDate()}"></span>
+						</td>
+						<td th:if="${purchaseOrder.getLastPaymentDate()==null}"></td>
+						<td><span th:attr="id=${purchaseOrder.boId+'invoice'}"
+							th:text="${purchaseOrder.invoiceId}">P000017</span><span
+							th:attr="id=${purchaseOrder.boId+'boId'}"
+							th:text="${purchaseOrder.boId}" class="hide">P000017</span></td>
+						<td><span th:attr="id=${purchaseOrder.boId+'netAmount'}"
+							th:text="${purchaseOrder.getNetAmountWithoutReturnAndReject()}">120000</span></td>
+						<td><span th:text="${purchaseOrder.getTotalPayment()}">100000</span></td>
+						<td><span th:text="${purchaseOrder.getTotalDiscountTrueAndFalse()}"></span></td>
+						<td><span th:text="${purchaseOrder.getTotalCommission()}">2000</span></td>
+						<td><span th:attr="id=${purchaseOrder.boId+'balance'}"
+							th:text="${purchaseOrder.getBalanceWithoutReturnAndReject()}">balance</span></td>
+						<td
+							th:if="${purchaseOrder.getBalanceWithoutReturnAndReject() &gt; 0  and !customer.customerType.toString().equals('RETAIL')}"><span><input
+								type="button" name="btnPayment" onclick="openPaymentForm(this);"
+								value="Payment" th:attr="id=${purchaseOrder.boId}" /> <input
+								type="button" name="btnViewDetail"
+								th:if="${purchaseOrder.getPaymentList().size()> 0  and !customer.customerType.toString().equals('RETAIL')}"
+								onclick="openPaymentViewDetail(this);" value="Payment Detail"
+								th:attr="id=${purchaseOrder.boId}" /> <input type="button"
+								name="btnReturn" onclick="openReturnForm(this);" value="Return"
+								th:attr="id=${purchaseOrder.boId}" /> <input type="button"
+								th:if="${!purchaseOrder.isOpeningFlag()}" name="btnEdit"
+								onclick="editPurchaseOrderForm(this);" value="Edit"
+								th:attr="id=${purchaseOrder.boId}" /> <input type="button"
+								name="btnCancel"
+								th:if="${purchaseOrder.getInvoiceId()!='opening b/f' and purchaseOrder.getInvoiceId()!='Opening b/f'}"
+								onclick="openCancelPurchaseOrderForm(this);" value="Cancel"
+								th:attr="id=${purchaseOrder.boId}" /></span></td>
+						<td th:if="${purchaseOrder.getBalanceWithoutReturnAndReject() &lt;= 0}">
+							<!-- 	purchaseOrder.getPaymentList().size()> 0  and  --> <input
+							type="button" name="btnViewDetail"
+							onclick="openPaymentViewDetail(this);"
+							th:if="${!customer.customerType.toString().equals('RETAIL')}"
+							value="Payment Detail" th:attr="id=${purchaseOrder.boId}" /> <input
+							type="button" name="btnEdit"
+							onclick="editPurchaseOrderForm(this);" value="Edit"
+							th:if="${!purchaseOrder.isOpeningFlag()}"
+							th:attr="id=${purchaseOrder.boId}" /> <!-- th:if="${purchaseOrder.getInvoiceId()!='opening b/f' and purchaseOrder.getInvoiceId()!='Opening b/f'}" -->
+							<input type="button" name="btnCancel"
+							onclick="openCancelPurchaseOrderForm(this);" value="Cancel"
+							th:attr="id=${purchaseOrder.boId}" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				Total Balance:&nbsp;&nbsp;<span th:text="${customer.getBalance()}"></span>
+				<span>
+				<input type="button" name="btnCustomerAdj" onclick="customerAdjForm();"
+						value="Adjustment" />
+				</span>
+			</div>
+		</fieldset>
+	</div>
+	<div th:if="${location!=NULL}" id="location-detail-table" class="hide">
+		<table>
+			<col width="80px" />
+			<col width="300px" />
+			<col width="80px" />
+			<tr th:if="${location!='INVALID'}" th:value="${location.id}"
+				id="detail-location-id" class="hide">
+				<td class="detail-description">Location ID:</td>
+				<td th:text="${location.boId}" id="detail-location-boId">LOC00001</td>
+				<td th:if="${openingAdjustment!=null}" class="detail-description"
+					id="detail-location-openingDate"
+					th:text="${openingAdjustment.date}"></td>
+			</tr>
+			<tr th:if="${location!='INVALID'}" th:value="${location.id}"
+				id="detail-location-id" class="hide">
+				<td class="detail-description">Location ID:</td>
+				<td th:text="${location.boId}" id="detail-location-boId">LOC00001</td>
+				<td th:if="${openingAdjustment!=null}" class="detail-description"
+					id="detail-location-openingDate"
+					th:text="${openingAdjustment.date}"></td>
+			</tr>
+
+			<tr>
+				<td class="detail-description">Name:</td>
+				<td th:text="${location.name}" id="detail-location-name"
+					th:value="${location.boId}">Mingalardon</td>
+				<td class="detail-description">Type:</td>
+				<td th:text="${location.type.toString()}" id="detail-location-type">Factory</td>
+				<td class="detail-description" style="text-align: right;"><input
+					type="button" value="Report" onClick="reportLocationStockList()"
+					id="report-stockList" class="show" /></td>
+			</tr>
+			<tr th:if="${location.type.toString().equals('RETAIL')}">
+				<td align="left" class="detail-description">Code Changed:</td>
+				<td><span id="detail-location-codeChanged"
+					th:text="${location.isCodeChanged()}"></span></td>
+
+			</tr>
+			<tr th:if="${location.type.toString().equals('LONG_TERM_WAREHOUSE')}">
+				<td colspan="5"><input type="button" value="Load"
+					onClick="loadOpeningData()" class="hide" /></td>
+
+			</tr>
+			<tr>
+				<td th:if="${!location.type.toString().equals('FACTORY')}"
+					colspan="5">
+					<fieldset>
+						<legend>Stock List</legend>
+						<table width="750px" border="solid" class="tablesorter"
+							id="detail-stockList">
+							<thead>
+								<tr>
+									<td align="center" width="150px">Product Code</td>
+									<td align="center" width="150px">Product Name</td>
+									<td align="right" width="150px">Price</td>
+									<td align="center" width="150px">Discounted</td>
+									<td align="right" width="150px">Quantity</td>
+									<td align="right" width="150px">Amount</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:if="${location.inventory.stockList != null}"
+									th:each="stock : ${location.inventory.stockList}">
+									<td
+										th:if="${stock.product.getLocationSpecificProductCode(location.boId)==null}"
+										align="center" th:text="${stock.product.getProductCode()}"></td>
+									<td
+										th:if="${stock.product.getLocationSpecificProductCode(location.boId)!=null}"
+										align="center" th:text="${stock.product.getProductCode()}"></td>
+									<td align="center" th:text="${stock.product.name}"></td>
+									<td align="right"
+										th:text="${#numbers.formatInteger(stock.product.getPriceByLocationWithoutLable(location.type),3,'COMMA')}"></td>
+									<td align="center" th:text="${stock.product.discounted}"></td>
+									<td align="right"
+										th:text="${#numbers.formatInteger(stock.quantity,1,'COMMA')}"></td>
+									<td align="right"
+										th:text="${#numbers.formatInteger(stock.quantity* stock.product.getPriceByLocationWithoutLable(location.type),1,'COMMA')}"></td>
+								</tr>
+							</tbody>
+							<tr th:if="${location.inventory.stockList.size()>0}">
+								<td style="border-top: 1px solid white;">Total</td>
+								<td style="border-top: 1px solid white;"></td>
+								<td style="border-top: 1px solid white;"></td>
+								<td style="border-top: 1px solid white;"></td>
+								<td align="right"
+									th:text="${#numbers.formatInteger(location.inventory.getTotalStockQuantity(),1,'COMMA')}"
+									style="border-top: 1px solid white;"></td>
+								<td align="right"
+									th:text="${#numbers.formatInteger(location.inventory.getTotalStockAmount(),3,'COMMA')}"
+									style="border-top: 1px solid white;"></td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td th:if="${location.type.toString().equals('OUTLET')}" colspan="5"
+					class="tablesorter" id="detail-routeList">
+					<fieldset>
+						<legend>Route List</legend>
+						<table border="solid">
+							<thead>
+								<tr>
+									<td>Start Date</td>
+									<td>End Date</td>
+									<td>City</td>
+									<td><input type="button" value="Create Route"
+										onclick="loadRoutForm();" id="createRoute" /></td>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="route:${location.ActiveFieldTripRouteList}">
+									<!--  td
+										th:text="${#dates.format(route.startDate,'dd/MM/YYYY')+" "+#dates.format(route.endDate,'d/MM/YYYY')}">
+									/td -->
+									<td><span th:attr="id=${route.boId+'startdate'}"
+										th:text="${route.startDate}">1/1/2015</span></td>
+									<td><span th:attr="id=${route.boId+'enddate'}"
+										th:text="${route.endDate}">1/1/2015</span></td>
+									<td th:attr="id=${route.boId+'city'}" th:text="${route.city}"></td>
+									<td th:if="${route.state.toString().equals('OPEN')}"><input
+										type="button" name="btnMarket" onclick="saleFromRoute(this);"
+										value="Sales" th:attr="id=${route.boId}" /> <input
+										type="button" name="btnIssue"
+										onclick="issueStockToRoute(this);" value="Issue"
+										th:attr="id=${route.boId}" /> <input type="button"
+										name="btnView" onclick="viewStockList(this);" value="Detail"
+										th:attr="id=${route.boId}" /><input type="button"
+										name="btnEdit" onclick="editRouteForm(this);" value="Edit"
+										th:attr="id=${route.boId}" /><input type="button"
+										name="btnDelete" onclick="deleteRoute(this);" value="Delete"
+										th:attr="id=${route.boId}" /> <input type="button"
+										name="btnClose" onclick="routeAdjustmentStockForm(this);"
+										value="Adjustment &amp; Close" th:attr="id=${route.boId}" /></td>
+									<td th:if="${route.state.toString().equals('CLOSE')}"><input
+										type="button" name="btnView" onclick="viewStockList(this);"
+										value="Detail" th:attr="id=${route.boId}" /> <input
+										type="button" name="btnView"
+										onclick="RecalculateCommission(this);" value="ReCalculate"
+										th:attr="id=${route.boId}" class="hide" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td th:if="${location.type.toString().equals('CAR')}" colspan="5"
+					class="tablesorter" id="detail-routeList">
+					<fieldset>
+						<legend>Route List</legend>
+						<table border="solid">
+							<thead>
+								<tr>
+									<td>Start Date</td>
+									<td>End Date</td>
+									<td>City</td>
+									<td><input type="button" value="Create Route"
+										onclick="carLoadRouteForm();" /></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="route:${location.getActiveZayCarRouteList()}">
+									<!--  td
+										th:text="${#dates.format(route.startDate,'dd/MM/YYYY')+' '+#dates.format(route.endDate,'d/MM/YYYY')}"></td-->
+									<td><span th:attr="id=${route.boId+'startdate'}"
+										th:text="${route.startDate}">1/1/2015</span></td>
+									<td><span th:attr="id=${route.boId+'enddate'}"
+										th:text="${route.endDate}">1/1/2015</span></td>
+									<td th:attr="id=${route.boId+'city'}" th:text="${route.city}"></td>
+									<td th:if="${route.state.toString().equals('OPEN')}"><input
+										type="button" name="btnMarket" onclick="saleFromRoute(this);"
+										value="Sales" th:attr="id=${route.boId}" /> <input
+										type="button" name="btnView" onclick="viewStockListCar(this);"
+										value="Detail" th:attr="id=${route.boId}" /><input
+										type="button" name="btnEdit"
+										onclick="editZayCarRouteForm(this);" value="Edit"
+										th:attr="id=${route.boId}" /> <input type="button"
+										name="btnDelete" onclick="deleteZayCarRoute(this);"
+										value="Delete" th:attr="id=${route.boId}" /> <input
+										type="button" name="btnClose"
+										onclick="closeZayCarRoute(this);" value="Close"
+										th:attr="id=${route.boId}" /></td>
+									<td th:if="${route.state.toString().equals('CLOSE')}"><input
+										type="button" name="btnView" onclick="viewStockListCar(this);"
+										value="Detail" th:attr="id=${route.boId}" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	<div th:if="${product!=NULL}" id="product-detail-table" class="hide">
+		<table width="250px" style="padding-top: 2%; padding-left: 5%">
+			<col width="50px" />
+			<col width="200px" />
+			<tr th:if="${product!='INVALID'}" th:value="${product.id}"
+				id="detail-product-id">
+				<td class="detail-description">Product Code:</td>
+				<td th:text="${product.getProductCode()}"
+					id="detail-product-boId-code">001</td>
+			</tr>
+			<tr class="hide">
+				<td th:text="${product.boId}" id="detail-product-boId"></td>
+				<td th:text="${product.getLocationId()}"
+					id="detail-product-locatin-boId"></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Name:</td>
+				<td th:text="${product.name}" id="detail-product-name">Shi toe</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Normal_Price:</td>
+				<td><span
+					th:text="${#numbers.formatInteger(product.price,3,'COMMA')}"
+					id="detail-product-price">25000</span>&nbsp;Kyats</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Credit_Price:</td>
+				<td><span th:if="${price!=NULL}" th:text="${price.credit}"
+					id="detail-product-creditPrice">25000</span>&nbsp;Kyats</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Special_Price:</td>
+				<td><span th:if="${price!=NULL}" th:text="${price.special}"
+					id="detail-product-specialPrice">25000</span>&nbsp;Kyats</td>
+			</tr>
+			<tr>
+				<td class="detail-description">ZayCar_Price:</td>
+				<td><span th:if="${price!=NULL}" th:text="${price.zaycar}"
+					id="detail-product-zayCarPrice">25000</span>&nbsp;Kyats</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Mandalay_Price:</td>
+				<td><span th:text="${price.mandalay}" th:if="${price!=NULL}"
+					id="detail-product-MandalayPrice">25000</span>&nbsp;Kyats</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Category:</td>
+				<td th:text="${product.category}" id="detail-product-category">GENERAL</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Discounted:</td>
+				<td th:text="${product.discounted}" id="detail-product-discounted">TRUE</td>
+			</tr>
+			<tr th:if="${product.volumePriceList.size()>0}">
+				<td colspan="2">
+					<table id="volumeprice_table" width="500px">
+						<tr>
+							<th>Min</th>
+							<th>Max</th>
+							<th>Price</th>
+						</tr>
+						<tr th:each="volume : ${product.volumePriceList}" align="center"
+							id="detail_allvolume">
+							<td><span
+								th:text="${#numbers.formatInteger(volume.minimun,3,'COMMA')}"
+								id="detail_volume_min" /></td>
+							<td><span
+								th:text="${#numbers.formatInteger(volume.maximun,3,'COMMA')}"
+								id="detail_volume_max" /></td>
+							<td><span
+								th:text="${#numbers.formatInteger(volume.price,3,'COMMA')}"
+								id="detail_volume_price" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:if="${transfer!=NULL}" id="transfer-detail-table" class="hide">
+		<table style="padding-top: 0%; padding-left: 0%">
+			<tr th:if="${transfer!='INVALID'}" th:value="${transfer.invoiceId}"
+				id="detail-product-id">
+				<td id="transfer-BoId" th:text="${transfer.BoId}" class="hide"></td>
+				<td class="detail-description">InvoiceNo:</td>
+				<td><span th:text="${transfer.invoiceId}"
+					id="detail-transfer-invoiceNo" /></td>
+				<td class="detail-description">Date:</td>
+				<td><span th:if="${transfer.date!=NULL}"
+					th:text="${#dates.format(transfer.date,'d/MM/YYYY')}"
+					id="detail-transfer-date" /></td>
+				<td class="detail-description">From:</td>
+				<td><span th:text="${transfer.from.name}"
+					id="detail-transfer-from-name" /></td>
+				<td class="detail-description">To:</td>
+				<td><span th:text="${transfer.to.name}"
+					id="detail-transfer-to-name" /> <span
+					th:text="${transfer.to.boId}" id="detail-transfer-to-BoId"
+					class="hide" /></td>
+			</tr>
+			<tr>
+				<td colspan="8">
+					<fieldset>
+						<legend>Stock List</legend>
+						<table>
+							<tr>
+								<td>Product Code</td>
+								<td>Product Name</td>
+								<td align="right">Quantity</td>
+								<td align="right">Price</td>
+								<td align="right">Discounted</td>
+								<td align="right">TotalAmount</td>
+							</tr>
+							<tr
+								th:each="transferStock : ${transfer.getEffectiveInventory(locId).stockList}">
+								<td th:text="${locId}" id="location-id" class="hide"></td>
+								<td><span
+									th:text="${transferStock.product.getProductCode()}"
+									id="detail-transferStock_boId" /></td>
+								<td><span th:text="${transferStock.product.name}"
+									id="detail-transferStock_name" /></td>
+								<td align="right"><span
+									th:text="${#numbers.formatInteger(transferStock.quantity,1,'COMMA')}"
+									id="detail-transferStock_quantity" /></td>
+								<td align="right"><span
+									th:text="${#numbers.formatInteger(transferStock.product.price,3,'COMMA')}"
+									id="detail-transferStock_price" /></td>
+								<td align="right"><span
+									th:text="${transferStock.product.discounted}"></span></td>
+								<td align="right"><span
+									th:text="${#numbers.formatInteger(transferStock.quantity * transferStock.product.price,3,'COMMA')}"
+									id="detail-transferStock_totalAmount" /></td>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td></td>
+								<td align="right" style="border-top: 1px solid white"><span
+									th:text="${#numbers.formatInteger(transfer.getEffectiveInventory(locId).getTotalStockQuantity(),1,'COMMA')}"
+									id="transfer_TotalStock_quantity" /></td>
+								<td></td>
+								<td></td>
+								<td align="right" style="border-top: 1px solid white"><span
+									th:text="${#numbers.formatInteger(transfer.getEffectiveInventory(locId).getTotalStockAmount(),3,'COMMA')}"
+									id="detail-TotalStock_amount" /></td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div th:if="${adjustment!=NULL}" id="adjustment-detail-table"
+		class="hide">
+		<table style="padding-top: 0%; padding-left: 0%">
+			<tr>
+				<td>Discount</td>
+				<td><span th:text="${adjustment.discount}"></span></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				
+					
+			</tr>
+			<tr>
+				<td>Type</td>
+				<td><span th:text="${adjustment.type}"></span></td>
+				<td></td>
+				<td></td>
+				<td></td>
+					
+			</tr>
+			<tr>
+				<td>Description:</td>
+				<td><span th:text="${adjustment.description}"></span></td>
+				<td></td>
+				<td></td>
+				<td></td>
+					
+			</tr>
+			
+			<tr>
+				<td colspan="5">
+					<fieldset>
+						<legend>Adjustment Stock List</legend>
+						<table>
+							<tr>
+								<td align="right">Product Code</td>
+								<td align="center">Product Name</td>
+								<td align="right">Price</td>
+								<td align="right">StockQty</td>
+								<td align="right">GroundQty</td>
+								<td align="right">Adjustment</td>
+								<td align="right">TotalAmount</td>
+							</tr>
+							<tr th:if="${adjustment.inventory.stockList != null}"
+								th:each="stock : ${adjustment.inventory.stockList}">
+								<td align="right" th:text="${stock.product.getProductCode()}"></td>
+								<td align="right" th:text="${stock.product.boId}"
+									name="adjustmentStock_boIdList" class="hide"></td>
+								<td align="center" th:text="${stock.product.name}"></td>
+								<td align="right"
+									th:text="${stock.product.getPriceByLocationWithoutLable(locationType)}"></td>
+								<td align="right" th:text="${stock.quantity}"></td>
+								<td align="right" th:text="${stock.groundQty}"></td>
+								<td align="right" th:text="${stock.groundQty-stock.quantity}"></td>
+								<td align="right" th:if="${stock.isAdjStockDiscounted()==true}"
+									th:text="${(stock.groundQty-stock.quantity)*stock.product.getPriceByLocationWithoutLable(locationType)-((stock.groundQty-stock.quantity)*stock.product.getPriceByLocationWithoutLable(locationType)*0.01*adjustment.discount)}"></td>
+								<td align="right" th:if="${stock.isAdjStockDiscounted()==false}"
+									th:text="${#numbers.formatInteger((stock.groundQty-stock.quantity)*stock.product.getSwamCreditPrice(),3,'COMMA')}"></td>
+							</tr>
+							<tr>
+								<td align="right"></td>
+								<td align="right" style="border-top: 1px solid white">Total</td>
+								<td align="right" style="border-top: 1px solid white"
+									th:text="${adjustment.inventory.getTotalPrice()}"></td>
+								<td align="right" style="border-top: 1px solid white"
+									th:text="${adjustment.inventory.getTotalStockQuantity()}"></td>
+								<td align="right" style="border-top: 1px solid white"
+									th:text="${adjustment.inventory.getTotalStockGroundQty()}"></td>
+								<td align="right" style="border-top: 1px solid white"
+									th:text="${adjustment.inventory.getTotalStockGroundQty()-adjustment.inventory.getTotalStockQuantity()}"></td>
+								<td align="right" style="border-top: 1px solid white"
+									th:text="${#numbers.formatInteger(adjustment.inventory.getTotalAdjStockAmountLocationType(adjustment.discount,locationType),2,'COMMA')}"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:if="${route!=NULL}" id="route-detail-table" class="hide">
+		<table style="padding-top: 0%; padding-left: 0%">
+
+			<tr>
+				<td colspan="5" th:if="${Type.equals('FT')}">
+					<fieldset>
+						<legend>Route Commission</legend>
+						<table>
+							<tr>
+								<td>Employee Name:</td>
+								<td colspan="3">
+									<div th:if="${route.routeEmployeeList != null}"
+										th:each="employee : ${route.routeEmployeeList}">
+										<span th:text="${employee.getFullName()}"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+											th:text="${route.getCommissionByEmployee(employee)}"></span>
+									</div>
+								</td>
+
+							</tr>
+							<tr>
+								<td colspan="4">Total Sales Quantity: &nbsp;<span
+									th:text="${route.saleQuantityInfo.getTotalSalesQuantity()}">Psc</span></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td style="text-align: center;">Quantity</td>
+								<td style="text-align: center;">Commission</td>
+								<td style="text-align: center;">Amount</td>
+							</tr>
+							<tr>
+								<td>Cash Down Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.cashDownSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.cashDownSaleCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.cashDownSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Credit Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.creditSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.creditSaleCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.creditSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Discount Cash Down Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.discountCashDownSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountCashDownSaleCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.discountCashDownSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Discount Credit Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.discountCreditSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountCreditSaleCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.discountCreditSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Swam Cash Down Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamCashDownSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamCashDownSaleCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamCashDownSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Swam Credit Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamCreditSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamCreditSaleCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamCreditSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Expense</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;" th:text="${route.actualExpense}"></td>
+							</tr>
+							<tr>
+								<td>ShortFall Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.getTotalSalesQuantity()-route.saleQuota}"></td>
+								<td style="text-align: right;" th:text="${route.shortFallFine}"></td>
+								<td style="text-align: right; color: red;"
+									th:text="${route.saleQuantityCommission.shortFallFine}"></td>
+							</tr>
+
+							<tr>
+								<td>Adjustment</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.adjustmentFine}"></td>
+							</tr>
+							<tr>
+								<td>Total Commission</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;" th:text="${route.getNetProfit()}"></td>
+							</tr>
+
+
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Debit Collection Commission</legend>
+						<table width="100%" style="border-collapse: collapse;" border="1">
+							<tr>
+								<td>Employee Name:</td>
+								<td colspan="3">
+									<div th:if="${route.routeEmployeeList != null}"
+										th:each="employee : ${route.routeEmployeeList}">
+										<span th:text="${employee.getFullName()}"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+											th:text="${route.getDebitCollectionCommissionByEmployee(employee)}"></span>
+									</div>
+								</td>
+
+							</tr>
+							<tr>
+								<td></td>
+								<td>Quantity</td>
+								<td>Commission</td>
+								<td>Amount</td>
+							</tr>
+							<tr>
+								<td>Within One Month</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.debtCollectionCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.salesQuantityWithinOneMonthCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.debtCollectionCommission}"></td>
+							</tr>
+							<tr>
+								<td>Within One Month for Swam</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamDebitCollectionCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamSalesQuantityWithinOneMonthCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamDebitCollectionCommission}"></td>
+							</tr>
+							<tr>
+								<td>Within One Month for Discount</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.discountDebitCollectionCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountSalesQuantityWithinOneMonthCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.discountDebitCollectionCommission}"></td>
+							</tr>
+							<tr>
+								<td>Return Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.returnCount}"></td>
+								<td style="text-align: right;" th:text="${route.returnFine}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.returnFine}"></td>
+							</tr>
+							<tr>
+								<td>Swam Return Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamReturnCount}"></td>
+								<td style="text-align: right;" th:text="${route.swamReturnFine}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamReturnFine}"></td>
+							</tr>
+							<tr>
+								<td>Discount Return Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.discountReturnCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountReturnFine}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.discountReturnFine}"></td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.getTotalDebitCollection()}"></td>
+							</tr>
+						</table>
+					</fieldset>
+
+
+
+				</td>
+				<td colspan="5" th:if="${Type.equals('Car')}">
+					<fieldset>
+						<legend>ZayCar Route Commission</legend>
+						<table width="100%" style="border-collapse: collapse;" border="1">
+							<tr>
+								<td colspan="4">Total Sales Quantity: &nbsp;<span
+									th:text="${route.saleQuantityInfo.getTotalSalesQuantity()}">Psc</span></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Quantity</td>
+								<td>Commission</td>
+								<td>Amount</td>
+							</tr>
+							<tr>
+								<td>Cash Down Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.cashDownSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.cashDownSalesQuantityCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.cashDownSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Credit Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.creditSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.creditSalesQuantityCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.creditSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Swan Cash Down Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamCashDownSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamCashDownSalesQuantityCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamCashDownSaleCommission}"></td>
+							</tr>
+							<tr>
+								<td>Swam Credit Quantity</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamCreditSaleCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamCreditSalesQuantityCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamCreditSaleCommission}"></td>
+							</tr>
+
+							<tr>
+								<td>Discount Sales Revenue</td>
+								<td style="text-align: right;"
+									th:text="${route.discountSaleRevenue}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountSaleRevenuePercenage}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountSaleRevenueCommission}"></td>
+							</tr>
+							<tr>
+								<td>Within One Month</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.debtCollectionCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.salesQuantityWithinOneMonthCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.debtCollectionCommission}"></td>
+							</tr>
+							<tr>
+								<td>Within One Month for Swam</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamDebitCollectionCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamSalesQuantityWithinOneMonthCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamDebitCollectionCommission}"></td>
+							</tr>
+							<tr>
+								<td>Within One Month for Discount</td>
+								<td style="text-align:right;" th:text="${route.discountDebitCollection}"></td>
+								<td style="text-align:right;" th:text="${route.discountDebitCollectionPercenage}"></td>
+								<td style="text-align:right;" th:text="${route.discountDebitCollectionCommission}"></td>							</tr>
+
+							<tr>
+								<td>Expense</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;" th:text="${route.actualExpense}"></td>
+							</tr>
+							<tr>
+								<td>ShortFall Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.getShortFallCount()}"></td>
+								<td style="text-align: right;" th:text="${route.shortFallFine}"></td>
+								<td style="text-align: right; color: red;"
+									th:text="${route.saleQuantityCommission.shortFallFine}"></td>
+							</tr>
+							<tr>
+								<td>Return Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.returnCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.returnQuantityCommission}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.returnFine}"></td>
+
+							</tr>
+							<tr>
+								<td>Swam Return Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.swamReturnCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.swamReturnQuantityFine}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.swamReturnFine}"></td>
+
+							</tr>
+							<tr>
+								<td>Discount Return Fine</td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityInfo.discountReturnCount}"></td>
+								<td style="text-align: right;"
+									th:text="${route.discountReturnFine}"></td>
+								<td style="text-align: right;"
+									th:text="${route.saleQuantityCommission.discountReturnFine}"></td>
+
+							</tr>
+							<tr>
+								<td>Present Fine</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;" th:text="${route.presentFine}"></td>
+							</tr>
+							<tr>
+								<td>Depreciation</td>
+								<td></td>
+								<td style="text-align: right;" th:text="${route.depreciation}"></td>
+								<td style="text-align: right;"
+									th:text="${route.getDepreciationAmount()}"></td>
+							</tr>
+							<tr>
+								<td>Total Commission</td>
+								<td></td>
+								<td></td>
+								<td style="text-align: right;" th:text="${route.getNetProfit()}"></td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div th:if="${purchase_order!=NULL}" id="purchase_order-detail-table"
+		class="hide">
+		<table style="padding-top: 0%; padding-left: 0%">
+			<col width="50px" />
+			<col width="100px" />
+			<col width="50px" />
+			<col width="100px" />
+			<col width="50px" />
+			<col width="100px" />
+			<tr th:if="${purchase_order!='INVALID'}"
+				th:value="${purchase_order.invoiceId}" id="detail-product-id">
+				<td class="detail-description">InvoiceNo:</td>
+				<td><span th:text="${purchase_order.invoiceId}"
+					id="detail-purchase_order-invoiceNo" /></td>
+				<td class="detail-description">Date:</td>
+				<td><span th:if="${purchase_order.date!=NULL}"
+					th:text="${#dates.format(purchase_order.date,'d/MM/YYYY')}"
+					id="detail-purchase_order-date" /></td>
+				<td class="detail-description">RouteId:</td>
+				<td><span th:text="${purchase_order.routeId}"
+					id="detail-purchase_order-routeId" /></td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<fieldset>
+						<legend>Item List</legend>
+						<table>
+							<tr>
+								<td>Product Code</td>
+								<td>Product Name</td>
+								<td align="right">Quantity</td>
+								<td align="right">Price</td>
+								<td align="right">Promotion</td>
+								<td align="right">Discounted</td>
+								<td align="right">TotalAmount</td>
+							</tr>
+							<tr th:each="lineitem : ${purchase_order.lineItemList}">
+								<td><span th:text="${lineitem.product.getProductCode()}"
+									id="detail-lineitem_name" /></td>
+								<td><span th:text="${lineitem.product.name}"
+									id="detail-lineitem_name" /></td>
+								<td align="right"><span
+									th:text="${#numbers.formatInteger(lineitem.quantity,1,'COMMA')}"
+									id="detail-lineitem_name" /></td>
+								<td align="right"><span
+									th:text="${#numbers.formatInteger(lineitem.price,3,'COMMA')}"
+									id="detail-lineitem_price" /></td>
+								<td align="right"><span th:text="${lineitem.promotion}"
+									id="detail-lineitem_promotion" /></td>
+								<td align="right"><span th:text="${lineitem.discounted}"></span></td>
+								<td align="right"><span
+									th:text="${#numbers.formatInteger(lineitem.quantity * lineitem.price,3,'COMMA')}"
+									id="detail-lineitem_totalAmount" /></td>
+							</tr>
+							<tr th:each="addcost : ${purchase_order.additionalCostList}">
+								<td><span th:text="${addcost.name}" /></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td align="right"><span th:text="${addcost.cost}" /></td>
+							</tr>
+							<tr align="right">
+								<td colspan="6" align="right">Discount False(-):</td>
+								<td><span th:if="${purchase_order.getTotalDiscountedFalse(purchase_order.getLocation().type)>0}"
+									th:text="${purchase_order.getTotalDiscountedFalse(purchase_order.getLocation().type)}"
+									id="detail-purchase_order-discount" /></td>
+							</tr>
+							<tr align="right">
+								<td colspan="6" align="right">Discount True(-):</td>
+								<td><span th:if="${purchase_order.getTotalDiscountedTrue(purchase_order.getLocation().type)>0}"
+									th:text="${purchase_order.getTotalDiscountedTrue(purchase_order.getLocation().type)}"
+									id="detail-purchase_order-discount" /></td>
+							</tr>
+							<tr align="right">
+								<td colspan="6" align="right">Additional Cash Discount(-):</td>
+								<td><span
+									th:text="${purchase_order.additionalCashDiscount}"
+									id="detail-purchase_order-additionalCashDiscount" /></td>
+							</tr>
+							<tr align="right">
+								<td></td>
+								<td></td>
+								<td style="border-top: 1px solid white"><span
+									th:text="${#numbers.formatInteger(purchase_order.getAllTotalQyt(),1,'COMMA')}"
+									id="detail-purchase_order-totalQty" /></td>
+								<td colspan="3" align="right">NetAmount:</td>
+								<td style="border-top: 1px solid white"><span
+									th:text="${#numbers.formatInteger(purchase_order.netAmount,3,'COMMA')}"
+									id="detail-purchase_order-netAmount" /></td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+			<td colspan="6">
+					<fieldset>
+						<legend>Total Amount List</legend>
+						<table width="400" id="amounttable">
+							<tr>
+								<td>Date:</td>
+								<td>General Amount</td>
+								<td>General Discount Amount</td>
+								<td>Swam Amount</td>
+								<td>TotalAmount:</td>
+								<!--td colspan="3">&nbsp;</td -->
+							</tr>
+							<tr>
+								<td><span th:if="${purchase_order.date!=NULL}" 	th:text="${#dates.format(purchase_order.date,'d/MM/YYYY')}"	/></td>
+								<td><span th:text="${purchase_order.getTotalAmountByCategoryWithoutReturnAndReject('GENERAL')}"/></td>
+								<td><span th:text="${purchase_order.getTotalAmountByCategoryWithoutReturnAndReject('GENERAL_DISCOUNT')}"/></td>
+								<td><span th:text="${purchase_order.getTotalAmountByCategoryWithoutReturnAndReject('SWAM')}"/></td>
+								<td><span th:text="${purchase_order.getNetAmountWithoutReturnAndReject()}"/></td>
+								<!--td colspan="3">&nbsp;</td -->
+							</tr>
+							<!-- <tr>
+								<td></td>
+								<td><span th:text="${purchase_order.getLastTotalAmountByCategory('GENERAL')}"/></td>
+								<td><span th:text="${purchase_order.getLastTotalAmountByCategory('GENERAL_DISCOUNT')}"/></td>
+								<td><span th:text="${purchase_order.getLastTotalAmountByCategory('SWAM')}"/></td>
+								<td><span th:text="${purchase_order.netAmount}"/></td>
+								td colspan="3">&nbsp;</td
+							</tr> -->
+														
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+						
+			<tr>
+				<td colspan="6">
+					<fieldset>
+						<legend>Payment List</legend>
+						<table width="400" id="paymenttable">
+							<tr>
+								<td>Date:</td>
+								<td>General Payment</td>
+								<td>General Discount Payment</td>
+								<td>Swam Payment</td>
+								<td>TotalAmount:</td>
+								<!--td colspan="3">&nbsp;</td -->
+							</tr>
+							<tr th:each="payment : ${purchase_order.paymentList}">
+								<td><span th:if="${payment.date!=NULL}"
+									th:text="${#dates.format(payment.date,'dd/MM/YYYY')}"
+									id="detail-porder_payment-date" /></td>
+								<td th:each="actualPayment: ${payment.payments}"
+									th:text="${#numbers.formatInteger(actualPayment.totalAmount,1)}"
+									th:if="${actualPayment.productCategory.toString()=='GENERAL'}"></td>
+								<td th:each="actualPayment: ${payment.payments}"
+									th:text="${#numbers.formatInteger(actualPayment.totalAmount,1)}"
+									th:if="${actualPayment.productCategory.toString()=='GENERAL_DISCOUNT'}"></td>
+								<td th:each="actualPayment: ${payment.payments}"
+									th:text="${#numbers.formatInteger(actualPayment.totalAmount,1)}"
+									th:if="${actualPayment.productCategory.toString()=='SWAM'}"></td>
+								<td><span
+									th:text="${#numbers.formatInteger(payment.totalAmount,3,'COMMA')}"
+									id="detail-porder_payment_totalAmount" /></td>
+
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<fieldset>
+						<legend>CustomerReturn List</legend>
+						<table>
+							<tr
+								th:each="customerReturn : ${purchase_order. customerReturnList}">
+								<td>
+									<table>
+										<tr>
+											<td>Date:</td>
+											<td><span th:if="${customerReturn.date!=NULL}"
+												th:text="${#dates.format(customerReturn.date,'dd/MM/YYYY')}"
+												id="detail-porder_customerReturn-date" /></td>
+											<td colspan="4"></td>
+										</tr>
+										<tr>
+											<td>Product Code</td>
+											<td>Product Name</td>
+											<td align="right">Quantity</td>
+											<td align="right">Price</td>
+											<td align="right">Promotion</td>
+											<td align="right">Discounted</td>
+											<td align="right">TotalAmount</td>
+										</tr>
+										<tr th:each="lineitem : ${customerReturn.lineItemList}"
+											th:if="${lineitem.quantity!=0}">
+											<td><span th:text="${lineitem.product.getProductCode()}"
+												id="detail-lineitem_name" /></td>
+											<td><span th:text="${lineitem.product.name}"
+												id="detail-lineitem_name" /></td>
+											<td align="right"><span
+												th:text="${#numbers.formatInteger(lineitem.quantity,1,'COMMA')}"
+												id="detail-lineitem_name" /></td>
+											<td align="right"><span
+												th:text="${#numbers.formatInteger(lineitem.price,3,'COMMA')}"
+												id="detail-lineitem_price" /></td>
+											<td align="right"><span th:text="${lineitem.promotion}"
+												id="detail-lineitem_promotion" /></td>
+											<td align="right"><span th:text="${lineitem.discounted}"></span>
+											</td>
+											<td align="right"
+												th:if="${ !lineitem.discounted &amp;&amp; lineitem.checkReturnProductCategory('GENERAL')}">
+												<span
+												th:text="${#numbers.formatInteger((lineitem.quantity * lineitem.price)-((lineitem.quantity * lineitem.price)*(lineitem.promotion*0.01)),3,'COMMA')}"
+												id="detail-lineitem_totalAmount" />
+											</td>
+											<td align="right"
+												th:if="${  !(!lineitem.discounted &amp;&amp; lineitem.checkReturnProductCategory('GENERAL')) }">
+												<span
+												th:text="${#numbers.formatInteger(((lineitem.quantity * lineitem.price)),3,'COMMA')}"
+												id="detail-lineitem_totalAmount" />
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<fieldset>
+						<legend>CustomerReject List</legend>
+						<table>
+							<tr
+								th:each="customerReject : ${purchase_order. customerRejectList}">
+								<td>
+									<table>
+										<tr>
+											<td>Date:</td>
+											<td><span th:if="${customerReject.date!=NULL}"
+												th:text="${#dates.format(customerReject.date,'dd/MM/YYYY')}"
+												id="detail-porder_customerReturn-date" /></td>
+											<td colspan="4"></td>
+										</tr>
+										<tr>
+											<td>Product Code</td>
+											<td>Product Name</td>
+											<td align="right">Quantity</td>
+											<td align="right">Price</td>
+											<td align="right">Promotion</td>
+											<td align="right">Discounted</td>
+											<td align="right">TotalAmount</td>
+										</tr>
+										<tr th:each="lineitem : ${customerReject.lineItemList}"
+											th:if="${lineitem.quantity!=0}">
+											<td><span th:text="${lineitem.product.getProductCode()}"
+												id="detail-lineitem_name" /></td>
+											<td><span th:text="${lineitem.product.name}"
+												id="detail-lineitem_name" /></td>
+											<td align="right"><span
+												th:text="${#numbers.formatInteger(lineitem.quantity,1,'COMMA')}"
+												id="detail-lineitem_name" /></td>
+											<td align="right"><span
+												th:text="${#numbers.formatInteger(lineitem.price,3,'COMMA')}"
+												id="detail-lineitem_price" /></td>
+											<td align="right"><span th:text="${lineitem.promotion}"
+												id="detail-lineitem_promotion" /></td>
+											<td align="right"><span th:text="${lineitem.discounted}"></span></td>
+											<td align="right"
+												th:if="${ !lineitem.discounted &amp;&amp; lineitem.checkReturnProductCategory('GENERAL')}">
+												<span
+												th:text="${#numbers.formatInteger((lineitem.quantity * lineitem.price)-((lineitem.quantity * lineitem.price)*(lineitem.promotion*0.01)),3,'COMMA')}"
+												id="detail-lineitem_totalAmount" />
+											</td>
+											<td align="right"
+												th:if="${  !(!lineitem.discounted &amp;&amp; lineitem.checkReturnProductCategory('GENERAL')) }">
+												<span
+												th:text="${#numbers.formatInteger(((lineitem.quantity * lineitem.price)),3,'COMMA')}"
+												id="detail-lineitem_totalAmount" />
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div th:if="${salary!=NULL}" id="salary-detail-table" class="hide">
+		<table>
+			<tr>
+				<td>Name: <span th:text="${salary.boId}"
+					id="detail-salary-boId" class="hide">SAL0001</span> <span
+					th:text="${salaryLocation.boId}" id="detail-salary-loc-boId"
+					class="hide">LOC00001</span> <span th:text="${salaryLocation.name}"
+					id="detail-salary-loc-name" class="hide">165</span> <span
+					th:text="${salaryLocation.type}" id="detail-salary-loc-type"
+					class="hide">OUTLET</span>
+				</td>
+				<td id="salary-employee-name"><span
+					th:text="${salary.employee.title}" id="salary-employee-title"></span>
+					<span th:text="${salary.employee.firstName}"
+					id="salary-employee-firstName"></span> <span
+					th:text="${salary.employee.middleName}"
+					id="salary-employee-middleName"></span> <span
+					th:text="${salary.employee.lastName}" id="salary-employee-lastName"></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Position:</td>
+				<td th:text="${salary.employee.position.getValue()}"></td>
+				<td>Payment Date:</td>
+				<td th:text="${#dates.format(salary.payDate,'dd/MM/YYYY')}"
+					id="salary-payDate"></td>
+			</tr>
+			<tr>
+				<td>Net Amount:</td>
+				<td id="salary-netAmount" th:text="${salary.totalPay}"></td>
+				<td>PutASide Amount:</td>
+				<td th:text="${salary.putAsideDeduction}" id="salary-putAside"></td>
+			</tr>
+		</table>
+		<table style="padding-top: 0%; padding-left: 0%">
+			<tr>
+				<td colspan="4">
+					<fieldset>
+						<legend>Salary Detail</legend>
+						<table>
+							<tr
+								th:if="${salaryLocation.type.toString()=='OUTLET'}">
+								<td>
+									<table width="100%" style="border-collapse: collapse;"
+										border="1" id="table-salary">
+										<col width="200px" />
+										<col width="100px" />
+										<col width="100px" />
+										<col width="100px" />
+										<col width="100px" />
+										<tr>
+											<th>Title</th>
+											<th>Amount</th>
+											<th>Rate</th>
+											<th>Paid</th>
+											<th>PutASide</th>
+										</tr>
+										<tr>
+											<td>Basic Salary:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.basicPay}"
+												id="salary-emp-basicPay">30000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Sales Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesRevenueCommission}"></td>
+											<td align="right"><span
+												th:text="${#numbers.formatDecimal((salary.salePerformanceCommission.cashDownCommission),3,'COMMA',2,'POINT')}"
+												id="salary-emp-salesCommission">223,581</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Field Trip Day Allowance:</td>
+											<td align="right" th:text="${salary.fieldTripDayCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.fieldGoingPerDayAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.fieldTripDayAllowance}"
+												id="salary-emp-fieldTrip"></span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Field Trip Sales Commission:</td>
+											<td align="right"
+												th:text="${salary.getRouteTotalCommission()}"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.routeTotalCommission}"
+												id="salary-emp-fieldTrip-salary"></span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Sales Quantity:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesCountCommission}"
+												id="salary-emp-saleQty">33120</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Swam Sales Quantity:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesSwanCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesSwamQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesSwamCountCommission}"
+												id="salary-emp-saleswamQty">33120</span></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesSwamCountLeftCommission}"
+												id="salary-emp-savSwamSaleQty">9936</span></td>
+										</tr>
+										<tr>
+											<td>Good Attendance Allowance:</td>
+											<td align="right" th:text="${salary.goodAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.goodAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.goodAttendanceAllowance}"
+												id="salary-emp-withoutLeave"></span></td>
+											<td></td>
+										</tr>
+
+										<tr>
+											<td>Home Attendance Allowance:</td>
+											<td align="right" th:text="${salary.houseAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.houseAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.houseAttendanceAllowance}"
+												id="salary-emp-cHome">1500</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Food Allowance:</td>
+											<td align="right" th:text="${salary.dayofFood}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.foodAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.foodAllowance}"
+												id="salary-emp-snackAllowance">1500</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Transportation Allowance:</td>
+											<td align="right"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.commuteAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.commuteAllowance}"
+												id="salary-emp-carAllowance">8000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Code Answering:</td>
+											<td align="right" th:text="${salary.codingExamCode}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeExamAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.codingExamAllownance}"
+												id="salary-emp-ansCode">3000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Money Enrollment:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.moneyEnrollPay}" id="salary-emp-mep">3000</span></td>
+											<td></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'||salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Saving from Performance Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.putAsideSalesRevenueCommission}"></td>
+											<td></td>
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.putAsideCommission}"
+												id="salary-emp-saveCommision">130422</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'||salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Saving from Quantity Commission:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.putASideSalesQuantityCommmission}"></td>
+											<td></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesCountLeftCommission}"
+												id="salary-emp-savSaleQty">9936</span></td>
+										</tr>
+										<tr>
+											<td>On-Time Allowance:</td>
+											<td align="right" th:text="${salary.onTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.onTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.onTimeAllowance}"
+												id="salary-emp-timeAllowance"></span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Late Penalty Shared Reward:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.latePenaltySharedReward}"
+												id="salary-emp-timeAllowance"></span></td>
+											<td></td>
+										</tr>
+
+										<tr>
+											<td>Leave Penalty:(no.ofleave*)</td>
+											<td align="right" th:text="${salary.abscentDayCount}"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.abscentDayReduction}"
+												id="salary-emp-leaveFine">3274</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Late Penalty:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.lateArrivalFine}" id="salary-emp-lateFine">9800</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'||salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Customer Return Fine:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.returnCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.returnPenalty}"></td>
+											<td align="right">(<span th:text="${salary.returnFine}"
+												id="salary-emp-returnFine">12600</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Sales Panelty(within 1 month Credit)</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.unsettledCreditAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.debitDuePenalty}"></td>
+											<td align="right">(<span
+												th:text="${salary.salesPaneltyFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Wrong Code Fine</td>
+											<td align="right" th:text="${salary.codeWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.codeWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Wrong Price Fine</td>
+											<td align="right" th:text="${salary.priceWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.priceWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.priceWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Missing Customer Signature</td>
+											<td align="right" th:text="${salary.customerSignatureCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.customerSignatureFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.customerSignatureFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Fine:( Comment*** <span
+												th:text="${salary.fineComment}"></span> )
+											</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span th:text="${salary.fine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr
+											th:if="${salaryLocation.name=='165' and salary.getEmployee().position.toString()=='MANAGER'}">
+											<td>Special Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.extraSalesRevenueCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.extraCommission}" id="salary-emp-revenue"></span></td>
+											<td></td>
+										</tr>
+										<tr name="salary-emp">
+											<td>Gross Amount:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-totalPay"><span
+												th:text="${salary.totalPay+salary.putASideValue}"
+												id="gross-salary-emp-totalPay">300701</span></td>
+											<td align="right" name="gross-salary-emp-putAsideDeduction"><span
+												th:text="${salary.putAsideDeduction-salary.putASideValue}"
+												id="gross-salary-emp-putAsideDeduction">300701</span></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>Net Amount:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+
+											<td align="right" name="netsalary-emp-totalPay"
+												th:text="${salary.totalPay}" id="salary-emp-totalPay"></td>
+											<td align="right" th:text="${salary.putAsideDeduction}"
+												id="salary-emp-putAsideDeduction"
+												name="netsalary-emp-putAsideDeduction"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr
+								th:if="${salaryLocation.type.toString()=='MANDALAY'}">
+								<td>
+									<table width="100%" style="border-collapse: collapse;"
+										border="1" id="table-salary">
+										<col width="200px" />
+										<col width="100px" />
+										<col width="100px" />
+										<col width="100px" />
+										<col width="100px" />
+										<tr>
+											<th>Title</th>
+											<th>Amount</th>
+											<th>Rate</th>
+											<th>Paid</th>
+											<th>PutASide</th>
+										</tr>
+										<tr>
+											<td>Basic Salary:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.basicPay}"
+												id="salary-emp-basicPay">30000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Sales Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesRevenueCommission}"></td>
+											<td align="right"><span
+												th:text="${#numbers.formatDecimal((salary.salePerformanceCommission.cashDownCommission),3,'COMMA',2,'POINT')}"
+												id="salary-emp-salesCommission">223,581</span></td>
+											<td></td>
+										</tr>
+										
+										<tr>
+											<td>Sales Quantity:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesCountCommission}"
+												id="salary-emp-saleQty">33120</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Swam Sales Quantity:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesSwanCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesSwamQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesSwamCountCommission}"
+												id="salary-emp-saleswamQty">33120</span></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesSwamCountLeftCommission}"
+												id="salary-emp-savSwamSaleQty">9936</span></td>
+										</tr>
+										<tr>
+											<td>Discount Sales Quantity:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesDiscountCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesSwamQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesDiscountCommission}"
+												id="salary-emp-saleswamQty">33120</span></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesDiscountCountLeftCommission}"
+												id="salary-emp-savSwamSaleQty">9936</span></td>
+										</tr>
+										<tr>
+											<td>Good Attendance Allowance:</td>
+											<td align="right" th:text="${salary.goodAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.goodAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.goodAttendanceAllowance}"
+												id="salary-emp-withoutLeave"></span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Food Allowance:</td>
+											<td align="right" th:text="${salary.dayofFood}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.foodAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.foodAllowance}"
+												id="salary-emp-snackAllowance">1500</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Transportation Allowance:</td>
+											<td align="right"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.commuteAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.commuteAllowance}"
+												id="salary-emp-carAllowance">8000</span></td>
+											<td></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'||salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Saving from Performance Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.putAsideSalesRevenueCommission}"></td>
+											<td></td>
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.putAsideCommission}"
+												id="salary-emp-saveCommision">130422</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'||salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Saving from Quantity Commission:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.putASideSalesQuantityCommmission}"></td>
+											<td></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesCountLeftCommission}"
+												id="salary-emp-savSaleQty">9936</span></td>
+										</tr>
+										<tr>
+											<td>On-Time Allowance:</td>
+											<td align="right" th:text="${salary.onTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.onTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.onTimeAllowance}"
+												id="salary-emp-timeAllowance"></span></td>
+											<td></td>
+										</tr>
+										
+										<tr>
+											<td>Leave Penalty:(no.ofleave*)</td>
+											<td align="right" th:text="${salary.abscentDayCount}"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.abscentDayReduction}"
+												id="salary-emp-leaveFine">3274</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Late Penalty:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.lateArrivalFine}" id="salary-emp-lateFine">9800</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'||salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Customer Return Fine:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.returnCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.returnPenalty}"></td>
+											<td align="right">(<span th:text="${salary.returnFine}"
+												id="salary-emp-returnFine">12600</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Sales Panelty(within 1 month Credit)</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.unsettledCreditAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.debitDuePenalty}"></td>
+											<td align="right">(<span
+												th:text="${salary.salesPaneltyFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Wrong Code Fine</td>
+											<td align="right" th:text="${salary.codeWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.codeWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Wrong Price Fine</td>
+											<td align="right" th:text="${salary.priceWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.priceWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.priceWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Missing Customer Signature</td>
+											<td align="right" th:text="${salary.customerSignatureCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.customerSignatureFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.customerSignatureFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Fine:( Comment*** <span
+												th:text="${salary.fineComment}"></span> )
+											</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span th:text="${salary.fine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+										<tr
+											th:if="${salaryLocation.name=='165' and salary.getEmployee().position.toString()=='MANAGER'}">
+											<td>Special Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.extraSalesRevenueCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.extraCommission}" id="salary-emp-revenue"></span></td>
+											<td></td>
+										</tr>
+										<tr name="salary-emp">
+											<td>Gross Amount:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-totalPay"><span
+												th:text="${salary.totalPay+salary.putASideValue}"
+												id="gross-salary-emp-totalPay">300701</span></td>
+											<td align="right" name="gross-salary-emp-putAsideDeduction"><span
+												th:text="${salary.putAsideDeduction-salary.putASideValue}"
+												id="gross-salary-emp-putAsideDeduction">300701</span></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>Net Amount:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+
+											<td align="right" name="netsalary-emp-totalPay"
+												th:text="${salary.totalPay}" id="salary-emp-totalPay"></td>
+											<td align="right" th:text="${salary.putAsideDeduction}"
+												id="salary-emp-putAsideDeduction"
+												name="netsalary-emp-putAsideDeduction"></td>
+										</tr>
+									</table>
+								</td>
+							
+							</tr>
+							<tr th:if="${salaryLocation.type.toString()=='SHOP'}">
+								<td colspan="4">
+									<table width="100%" style="border-collapse: collapse;"
+										border="1">
+										<tr>
+											<th>Title</th>
+											<th>Amount</th>
+											<th>Rate</th>
+											<th>Paid</th>
+										</tr>
+										<tr>
+											<td>Base Salary:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.basicPay}"
+												id="salary-emp-basicPay">30000</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER' ||salary.getEmployee().position.toString()=='ACCOUNTANT'}">
+											<td>Sales Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.salesRevenueCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.cashDownCommission}"
+												id="salary-emp-salesCommission">223,581</span></td>
+
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER' ||salary.getEmployee().position.toString()=='ACCOUNTANT'}">
+											<td>Cashier Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashierCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.managerRevenueCommission}"
+												id="salary-emp-salesCommission">223,581</span></td>
+
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='LINEMAN' ||salary.getEmployee().position.toString()=='HELPER'||salary.getEmployee().position.toString()=='SALES_REP'}">
+											<td>Sales Quantity Commission:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesCountCommission}"
+												id="salary-emp-salesCommission">223,581</span></td>
+										</tr>
+										<tr>
+											<td>Good Attendance Allowance:</td>
+											<td align="right" th:text="${salary.goodAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.goodAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.goodAttendanceAllowance}"
+												id="salary-emp-withoutLeave"></span></td>
+										</tr>
+										<tr>
+											<td>Home Attendance Allowance:</td>
+											<td align="right" th:text="${salary.houseAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.houseAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.houseAttendanceAllowance}"
+												id="salary-emp-cHome">1500</span></td>
+
+										</tr>
+
+										<tr>
+											<td>On Time allowance:</td>
+											<td align="right" th:text="${salary.onTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.onTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.onTimeAllowance}" id="salary-emp-onTime"></span></td>
+										</tr>
+
+										<tr>
+											<td>Food Allowance:</td>
+											<td align="right" th:text="${salary.dayofFood}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.foodAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.foodAllowance}"
+												id="salary-emp-snackAllowance">1500</span></td>
+
+										</tr>
+										<tr>
+											<td>Bonus:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.bonus}"
+												id="salary-emp-bonus">3000</span></td>
+
+										</tr>
+										<tr>
+											<td>OverTime:</td>
+											<td align="right" th:text="${salary.overTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.overTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.overTimeAllowance}" id="salary-emp-bonus">3000</span></td>
+
+										</tr>
+										<tr>
+											<td>Money Enrollment:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.moneyEnrollPay}" id="salary-emp-mep">3000</span></td>
+
+										</tr>
+										<tr>
+											<td>Late Penalty Shared Reward:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.latePenaltySharedReward}"
+												id="salary-emp-timeAllowance"></span></td>
+
+										</tr>
+										<tr>
+											<td>Leave Penalty:(no.ofleave*)</td>
+											<td align="right" th:text="${salary.abscentDayCount}"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.abscentDayReduction}"
+												id="salary-emp-leaveFine">3274</span>)
+											</td>
+
+										</tr>
+										<tr>
+											<td>Late Penalty:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.lateArrivalFine}" id="salary-emp-lateFine">9800</span>)
+											</td>
+
+										</tr>
+
+										<tr>
+											<td>Wrong Price Fine</td>
+											<td align="right" th:text="${salary.priceWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.priceWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.priceWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+										</tr>
+										<tr>
+											<td>Wrong Code Fine</td>
+											<td align="right" th:text="${salary.codeWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.codeWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+										</tr>
+										<tr>
+											<td>Missing Customer Signature</td>
+											<td align="right" th:text="${salary.customerSignatureCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.customerSignatureFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.customerSignatureFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+
+										</tr>
+
+										<tr>
+											<td>Fine:( Comment*** <span
+												th:text="${salary.fineComment}"></span> )
+											</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span th:text="${salary.fine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+
+										</tr>
+										<tr>
+											<td>Net:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.totalPay+salary.putAsideDeduction}"
+												id="salary-emp-net">300701</span></td>
+
+										</tr>
+										<tr name="salary-emp">
+											<td>Paid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-totalPay"><span
+												th:text="${salary.totalPay+salary.putASideValue}"
+												id="salary-emp-totalPay">300701</span></td>
+
+										</tr>
+										<tr name="salary-emp">
+											<td>PutASideDeduction:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-putAsideDeduction"><span
+												th:text="${salary.putAsideDeduction-salary.putASideValue}"
+												id="salary-emp-putAside">300701</span></td>
+
+										</tr>
+
+										<tr name="salary-net-emp">
+											<td>TotalPaid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="netsalary-emp-totalPay"
+												th:text="${salary.totalPay}" id="salary-emp-totalPay"></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>TotalPutASideDeduction</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" th:text="${salary.putAsideDeduction}"
+												id="salary-emp-putAsideDeduction"
+												name="netsalary-emp-putAsideDeduction"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr th:if="${salaryLocation.type.toString()=='CAR'}">
+								<td colspan="4">
+									<table width="100%" style="border-collapse: collapse;"
+										border="1">
+										<tr>
+											<th>Title</th>
+											<th>Amount</th>
+											<th>Rate</th>
+											<th>Paid</th>
+										</tr>
+										<tr>
+											<td>FieldTrip Allowance:</td>
+											<td align="right" th:text="${salary.extraCommission}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.commissionPercentage}"></td>
+											<td align="right"><span
+												th:text="${salary.getRouteTotalCommission()}"
+												id="salary-emp-allow">30000</span></td>
+										</tr>
+										<tr>
+											<td>FieldTrip Day Allowance:</td>
+											<td align="right" th:text="${salary.fieldTripDayCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.zayCarFieldTripAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.fieldTripDayAllowance}"
+												id="salary-emp-dayallowance">223,581</span></td>
+										</tr>
+										<tr>
+											<td>Total:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" style="border-top: 1px solid white"><span
+												th:text="${salary.getRouteTotalCommission()+salary.fieldTripDayAllowance}"
+												id="salary-emp-total"></span></td>
+										</tr>
+										<tr>
+											<td>Base Salary:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.basicPay}"
+												id="salary-emp-base">150000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Debit Commission (Previous Month):</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.shortTermSaleCommission}"
+												id="salary-emp-cHome">1500</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Home Attendance Allowance:</td>
+											<td align="right" th:text="${salary.houseAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.houseAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.houseAttendanceAllowance}"
+												id="salary-emp-cHome">1500</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Sales Panelty Fine(within 1 month Credit)</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.unsettledCreditAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.debitDuePenalty}"></td>
+											<td align="right">(<span
+												th:text="${salary.salesPaneltyFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+											<td></td>
+										</tr>
+
+										<tr>
+											<td>Wrong Code Fine</td>
+											<td align="right" th:text="${salary.codeWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.codeWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+
+										</tr>
+										<tr>
+											<td>Wrong Price Fine</td>
+											<td align="right" th:text="${salary.priceWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.priceWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.priceWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+
+										</tr>
+										<tr>
+											<td>Missing Customer Signature Fine</td>
+											<td align="right" th:text="${salary.customerSignatureCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.customerSignatureFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.customerSignatureFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+
+										</tr>
+
+										<tr>
+											<td>Fine:( Comment*** <span
+												th:text="${salary.fineComment}"></span> )
+											</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span th:text="${salary.fine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+
+										</tr>
+										<tr name="salary-emp">
+											<td>Paid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-totalPay"><span
+												th:text="${salary.totalPay+salary.putASideValue}"
+												id="salary-emp-totalPay">300701</span></td>
+
+										</tr>
+										<tr name="salary-emp">
+											<td>PutASideDeduction:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-putAsideDeduction"><span
+												th:text="${salary.putAsideDeduction-salary.putASideValue}"
+												id="salary-emp-putAside">300701</span></td>
+
+										</tr>
+
+										<tr name="salary-net-emp">
+											<td>TotalPaid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="netsalary-emp-totalPay"
+												th:text="${salary.totalPay}" id="salary-emp-totalPay"></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>TotalPutASideDeduction</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" th:text="${salary.putAsideDeduction}"
+												id="salary-emp-putAsideDeduction"
+												name="netsalary-emp-putAsideDeduction"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr th:if="${salaryLocation.type.toString()=='RETAIL'}">
+								<td colspan="4">
+									<table width="100%" style="border-collapse: collapse;"
+										border="1">
+										<tr>
+											<th>Title</th>
+											<th>Amount</th>
+											<th>Rate</th>
+											<th>Paid</th>
+										</tr>
+										<tr>
+											<td>Base Salary:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.basicPay}"
+												id="salary-emp-basicPay">30000</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='LINEMAN'||salary.getEmployee().position.toString()=='LEADER' ||salary.getEmployee().position.toString()=='PROMOTION_MANAGER' }">
+											<td>Sales Quantity Commission:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.totalSalesCountCommission}"
+												id="salary-emp-salesCommission">223,581</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='PROMOTION_LEADER'||salary.getEmployee().position.toString()=='LEADER' || salary.getEmployee().position.toString()=='PROMOTION_MANAGER' || salary.getEmployee().position.toString()=='PROMOTION_HELPER'}">
+											<td>Promotion Commission:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalPromotionSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.promotionSalesQuantityCommissionForRetail}"></td>
+											<td align="right"><span
+												th:text="${salary.monthlySalesCommission.commission}"
+												id="salary-emp-promotionCommission">223,581</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='RETAIL_MANAGER'}">
+											<td>Sales Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlySaleAmount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesRevenueCommission}"></td>
+
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.cashDownCommission}"
+												id="salary-emp-perfCom">223,581</span></td>
+										</tr>
+										<tr>
+											<td>Code Answering:</td>
+											<td align="right" th:text="${salary.codingExamCode}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeExamAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.codingExamAllownance}"
+												id="salary-emp-ansCode">3000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Food Allowance:</td>
+											<td align="right" th:text="${salary.dayofFood}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.foodAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.foodAllowance}"
+												id="salary-emp-foodAllowance">3000</span></td>
+
+										</tr>
+										<tr>
+											<td>Transportation Allowance:</td>
+											<td align="right"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.commuteAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.commuteAllowance}"
+												id="salary-emp-carAllowance">8000</span></td>
+										</tr>
+										<tr>
+											<td>Full Used Money:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.fullUseMoney}"
+												id="salary-emp-fUM">8000</span></td>
+
+										</tr>
+										<tr>
+											<td>Good Attendance Allowance:</td>
+											<td align="right" th:text="${salary.goodAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.goodAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.goodAttendanceAllowance}"
+												id="salary-emp-withoutLeave"></span></td>
+										</tr>
+										<tr>
+											<td>On Time allowance:</td>
+											<td align="right" th:text="${salary.onTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.onTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.onTimeAllowance}" id="salary-emp-onTime"></span></td>
+										</tr>
+										<tr>
+											<td>OverTime:</td>
+											<td align="right" th:text="${salary.overTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.overTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.overTimeAllowance}" id="salary-emp-bonus">3000</span></td>
+										</tr>
+										<tr>
+											<td>Late Penalty Shared Reward:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span
+												th:text="${salary.latePenaltySharedReward}"
+												id="salary-emp-timeAllowance"></span></td>
+
+										</tr>
+										<tr>
+											<td>Leave Penalty:(no.ofleave*)</td>
+											<td align="right" th:text="${salary.abscentDayCount}"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.abscentDayReduction}"
+												id="salary-emp-leaveFine">3274</span>)
+											</td>
+										</tr>
+										<tr>
+											<td>Late Penalty:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.lateArrivalFine}" id="salary-emp-lateFine">9800</span>)
+											</td>
+
+										</tr>
+										<tr>
+											<td>Wrong Code Fine</td>
+											<td align="right" th:text="${salary.codeWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.codeWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+										</tr>
+										<tr>
+											<td>Wrong Price Fine</td>
+											<td align="right" th:text="${salary.priceWrongCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.priceWrongFine}"></td>
+											<td align="right">(<span
+												th:text="${salary.priceWrongFine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+										</tr>
+										<tr>
+											<td>Fine:( Comment*** <span
+												th:text="${salary.fineComment}"></span> )
+											</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span th:text="${salary.fine}"
+												id="salary-emp-fineallowance">22513</span>)
+											</td>
+										</tr>
+										<tr name="salary-emp">
+											<td>Paid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-totalPay"><span
+												th:text="${salary.totalPay+salary.putASideValue}"
+												id="salary-emp-totalPay">300701</span></td>
+										</tr>
+										<tr name="salary-emp">
+											<td>PutASideDeduction:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-putAsideDeduction"><span
+												th:text="${salary.putAsideDeduction-salary.putAsideDeduction}"
+												id="salary-emp-putAside">300701</span></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>TotalPaid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="netsalary-emp-totalPay"
+												th:text="${salary.totalPay}" id="salary-emp-totalPay"></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>TotalPutASideDeduction</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" th:text="${salary.putAsideDeduction}"
+												id="salary-emp-putAsideDeduction"
+												name="netsalary-emp-putAsideDeduction"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr th:if="${salaryLocation.type.toString()=='MAIN_WAREHOUSE'}">
+								<td colspan="4">
+									<table width="100%" style="border-collapse: collapse;"
+										border="1">
+										<tr>
+											<th>Title</th>
+											<th>Amount</th>
+											<th>Rate</th>
+											<th>Paid</th>
+										</tr>
+										<tr>
+											<td>Base Salary:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right"><span th:text="${salary.basicPay}"
+												id="salary-emp-basicPay">30000</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='MANAGER'}">
+											<td>Promotion Commission:</td>
+											<td align="right"
+												th:text="${salary.salePerformanceCommission.monthlyCommission}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.promotionSalesQuantityCommissionForRetail}"></td>
+											<td align="right"><span
+												th:text="${salary.salePerformanceCommission.commission}"
+												id="salary-emp-promotionCommission">223,581</span></td>
+										</tr>
+										<tr
+											th:if="${salary.getEmployee().position.toString()=='ASSISTANT_MANAGER'}">
+											<td>Export Commission:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.totalSalesCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.cashDownSalesQuantityCommission}"></td>
+											<td align="right"><span
+												th:text="${salary.getMonthlySalesCommission().getCommission()}"
+												id="salary-emp-perfCom">223,581</span></td>
+										</tr>
+										<tr>
+											<td>ShortFall Fine/Fine/Adjustment Fine:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span th:text="${salary.fine}"
+												id="salary-emp-fine">8000</span>)
+											</td>
+
+										</tr>
+										<tr>
+											<td>Good Attendance Allowance:</td>
+											<td align="right" th:text="${salary.goodAttendance}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.goodAttendanceAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.goodAttendanceAllowance}"
+												id="salary-emp-withoutLeave"></span></td>
+										</tr>
+										<tr>
+											<td>Code Answering:</td>
+											<td align="right" th:text="${salary.codingExamCode}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.codeExamAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.codingExamAllownance}"
+												id="salary-emp-ansCode">3000</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>On Time allowance:</td>
+											<td align="right" th:text="${salary.onTime}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.onTimeAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.onTimeAllowance}" id="salary-emp-onTime"></span></td>
+										</tr>
+										<tr>
+											<td>Transportation Allowance:</td>
+											<td align="right"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.commuteAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.commuteAllowance}"
+												id="salary-emp-carAllowance">8000</span></td>
+										</tr>
+										<tr>
+											<td>Food Allowance:</td>
+											<td align="right" th:text="${salary.dayofFood}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.foodAllowance}"></td>
+											<td align="right"><span
+												th:text="${salary.foodAllowance}"
+												id="salary-emp-foodAllowance">3000</span></td>
+
+										</tr>
+
+										<tr>
+											<td>Return Fine:</td>
+											<td align="right"
+												th:text="${salary.monthlySalesCommission.returnCount}"></td>
+											<td align="right"
+												th:text="${salary.employee.compensation.returnPenalty}"></td>
+											<td align="right">(<span
+												th:text="${salary.monthlySalesCommission.returnCountFine}"
+												id="salary-emp-withoutLeave"></span>)
+											</td>
+										</tr>
+										<tr>
+											<td>Late Fine:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right">(<span
+												th:text="${salary.lateArrivalFine}" id="salary-emp-late">22513</span>)
+											</td>
+										</tr>
+										<tr name="salary-emp">
+											<td>Paid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-totalPay"><span
+												th:text="${salary.totalPay+salary.putASideValue}"
+												id="salary-emp-totalPay">300701</span></td>
+										</tr>
+										<tr name="salary-emp">
+											<td>PutASideValue:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="gross-salary-emp-putAsideDeduction"><span
+												th:text="${salary.putAsideDeduction-salary.putASideValue}"
+												id="salary-emp-putAside">300701</span></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>TotalPaid:</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" name="netsalary-emp-totalPay"
+												th:text="${salary.totalPay}" id="salary-emp-totalPay"></td>
+										</tr>
+										<tr name="salary-net-emp">
+											<td>TotalPutASideDeduction</td>
+											<td align="right"></td>
+											<td align="right"></td>
+											<td align="right" th:text="${salary.putAsideDeduction}"
+												id="salary-emp-putAsideDeduction"
+												name="netsalary-emp-putAsideDeduction"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

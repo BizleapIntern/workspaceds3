@@ -1,0 +1,501 @@
+<div th:if="${type=='PRODUCT'}" id="productnewform-table">
+	<form action="javascript:addNewProduct('contentNew');"
+		id="newProductactionForm">
+		<table th:if="${product!='INVALID'}" class="newform-table"
+			id="newproductForm" align="center">
+			<col width="150px" />
+			<col width="250px" />
+			<tr>
+				<td colspan="2"><h3 align="center">
+						<span id="product_header">New Product Form</span>
+					</h3></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Code:</td>
+				<td><input type="text" name="product" id="add_product_code"
+					class="hide" /> <input type="text" name="product"
+					id="add_product_boId_code" required="required" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Name:</td>
+				<td><input type="text" id="add_product_name"
+					style="width: 140px; font-family: myanmar3;" required="required" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Price:</td>
+				<td><input type="text" id="add_product_price"
+					required="required" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Credit_Price:</td>
+				<td><input type="text" id="add_product_creditPrice" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Special_Price:</td>
+				<td><input type="text" id="add_product_specialPrice" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">ZayCar_Price:</td>
+				<td><input type="text" id="add_product_zayCarPrice" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Mandalay_Price:</td>
+				<td><input type="text" id="add_product_mandalayPrice" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Discounted:</td>
+				<td><input type="checkbox" id="add_product_discounted" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Category</td>
+				<td><select id="add_product_category" style="width: 140px;">
+						<option th:each="category : ${categoryList}"
+							th:value="${category}" th:text="${category}"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Location:</td>
+				<td><select id="add_product_location" style="width: 145px;">
+						<option value="" selected="selected">All</option>
+						<option th:each="location : ${locationList}"
+							th:value="${location.boId}" th:text="${location.name}">
+						</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="Save" id="add-newform-save" /> <input type="button"
+					value="Cancel" id="add-newform-cancel"
+					onclick="document.getElementById('dialog-temp').className='hide';" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<div th:if="${type=='EMPLOYEE'}" id="employeenewform-table">
+	<form action="javascript:addNewEmployee('contentNew');"
+		id="newEmployeeForm">
+		<table th:if="${employee!='INVALID'}" class="newform-table"
+			id="newEmployeeform" align="center">
+			<col width="150px" />
+			<col width="200px" />
+			<col width="150px" />
+			<col width="200px" />
+			<span class="hide" id="add_employee_boId"></span>
+			<tr>
+				<td colspan="4"><h3 align="center">
+						<span id="employee_header">New Employee Form</span>
+					</h3></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Name:</td>
+				<td><input type="text" id="add_employee_name"
+					required="required" style="width: 140px; font-family: myanmar3;" /></td>
+				<td class="detail-description">N.R.C:</td>
+				<td><input type="text" id="add_employee_nrc" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Date of birth:</td>
+				<td><input type="text" id="add_employee_dob"
+					placeholder="dd/mm/yyyy"
+					pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d" /></td>
+				<td class="detail-description">Education:</td>
+				<td><input type="text" id="add_employee_education" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Position:</td>
+				<td><select id="add_employee_position" style="width: 145px;">
+						<!--option value="" disabled="disabled" selected="selected">Please choose..</option-->
+						<option th:each="position : ${positionList}"
+							th:value="${position}" th:text="${position}"></option>
+				</select></td>
+				<td class="detail-description">Entrance Date:</td>
+				<td><input type="text" id="add_employee_entranceDate"
+					placeholder="dd/mm/yyyy"
+					pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">ATM:</td>
+				<td><input type="text" id="add_employee_atm" /></td>
+				<td class="detail-description">Basic Salary:</td>
+				<td><input type="number" id="add_employee_baseSalary"
+					placeholder="0" /></td>
+
+			</tr>
+			<tr>
+				<td class="detail-description">Location:</td>
+				<td><select id="add_employee_location" style="width: 145px;">
+						<!--option value="" disabled="disabled" selected="selected" >Please choose..</option-->
+						<option th:each="location : ${locationList}"
+							th:value="${location.boId}" th:text="${location.name}"></option>
+				</select></td>
+				<td class="detail-description">PutASide Amount:</td>
+				<td><input type="number" id="add_employee_putaSideAmount"
+					placeholder="0" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Phone Number:</td>
+				<td><input type="text" id="add_employee_phoneNumber" /></td>
+				<td class="detail-description">Email:</td>
+				<td><input type="text" id="add_employee_email" /></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<fieldset>
+						<legend style="color: gray;">Address</legend>
+						<div align="center">
+							<table>
+								<tr>
+									<td>Line 1:</td>
+									<td><input type="text" id="add_employee_addressLine1"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>Line 2:</td>
+									<td><input type="text" id="add_employee_addressLine2"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>City:</td>
+									<td><input type="text" id="add_employee_city"
+										style="width: 140px; font-family: myanmar3;" /></td>
+								</tr>
+								<tr>
+									<td>State:</td>
+									<td><input type="text" id="add_employee_state"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>Country:</td>
+									<td><input type="text" id="add_employee_country"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>Postal Code:</td>
+									<td><input type="text" id="add_employee_postalCode"
+										style="width: 140px; font-family: myanmar3;" /></td>
+								</tr>
+							</table>
+						</div>
+					</fieldset>
+				</td>
+
+			</tr>
+			<tr>
+				<td colspan="8" align="center"><input type="submit"
+					value="Save" id="add-newform-save" /> <input type="button"
+					value="Cancel" id="add-newform-cancel"
+					onclick="document.getElementById('dialog-temp').className='hide';" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<div th:if="${type=='CUSTOMER'}" id="customernewform-table">
+	<form action="javascript:addNewCustomer('contentNew');"
+		id="newCustomerForm">
+		<table th:if="${customer!='INVALID'}" class="newform-table"
+			id="newCustomerform" align="center">
+			<col width="150px" />
+			<col width="200px" />
+			<col width="150px" />
+			<col width="200px" />
+			<span class="hide" id="add_customer_boId"></span>
+			<tr>
+				<td colspan="4"><h3 align="center">
+						<span id="customer_header">New Customer Form</span>
+					</h3></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Name:</td>
+				<td colspan="3"><input type="text" required="required"
+					id="add_customer_name" style="width: 140px; font-family: myanmar3;" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">N.R.C:</td>
+				<td><input type="text" id="add_customer_nrc" /></td>
+				<td class="detail-description">Date of birth:</td>
+				<td><input type="text" id="add_customer_dob"
+					placeholder="dd/mm/yyyy"
+					pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Location:</td>
+				<td><select id="add_customer_location" style="width: 145px;">
+						<!--option value="" disabled="disabled" selected="selected" >Please choose..</option-->
+						<option th:each="location : ${locationList}"
+							th:value="${location.boId}" th:text="${location.name}"></option>
+				</select></td>
+				<td class="detail-description">Type:</td>
+				<td><select id="add_customer_Type" style="width: 145px;">
+						<option th:each="type : ${customerTypeList}" th:value="${type}"
+							th:text="${type}"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Phone Number:</td>
+				<td><input type="text" id="add_customer_phoneNumber" /></td>
+				<td class="detail-description">Email:</td>
+				<td><input type="text" id="add_customer_email" /></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<fieldset>
+						<legend style="color: gray;">Opening Balance</legend>
+						<div align="center">
+							<table>
+								<tr>
+									<td>Date:</td>
+									<td><input type="text" id="add_customer_openingDate"
+										placeholder="dd/mm/yyyy"
+										pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d"
+										required="required" /></td>
+									<td>Balance:</td>
+									<td><input type="number" id="add_customer_openingBalance" /></td>
+									<td>Remark:</td>
+									<td><input type="text" id="add_customer_remark"
+										style="width: 140px; font-family: myanmar3;" /></td>
+								</tr>
+							</table>
+						</div>
+					</fieldset>
+				</td>
+
+			</tr>
+
+
+			<tr>
+				<td colspan="4">
+					<fieldset>
+						<legend style="color: gray;">Address</legend>
+						<div align="center">
+							<table>
+								<tr>
+									<td>Line 1:</td>
+									<td><input type="text" id="add_customer_addressLine1"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>Line 2:</td>
+									<td><input type="text" id="add_customer_addressLine2"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>City:</td>
+									<td><input type="text" id="add_customer_city"
+										style="width: 140px; font-family: myanmar3;" /></td>
+								</tr>
+								<tr>
+									<td>State:</td>
+									<td><input type="text" id="add_customer_state"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>Country:</td>
+									<td><input type="text" id="add_customer_country"
+										style="width: 140px; font-family: myanmar3;" /></td>
+									<td>Postal Code:</td>
+									<td><input type="text" id="add_customer_postalCode"
+										style="width: 140px; font-family: myanmar3;" /></td>
+								</tr>
+							</table>
+						</div>
+					</fieldset>
+				</td>
+
+			</tr>
+			<tr>
+				<td colspan="8" align="center"><input type="submit"
+					value="Save" id="add-newform-save" /> <input type="button"
+					value="Cancel" id="add-newform-cancel"
+					onclick="document.getElementById('dialog-temp').className='hide';" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<div th:if="${type=='LOCATION'}" id="locationnewform-table">
+	<form action="javascript:addNewLocation('contentNew');"
+		id="newLocationForm">
+		<table th:if="${location!='INVALID'}" class="newform-table"
+			id="newLocationform" align="center">
+			<col width="150px" />
+			<col width="200px" />
+			<tr>
+				<td colspan="2"><h3 align="center">
+						<span id="customer_header">New Location Form</span>
+					</h3> <span class="hide" id="add_location_boId"></span></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Location Name:</td>
+				<td><input type="text" id="add_location_name"
+					required="required" style="width: 140px; font-family: myanmar3;" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Location Type:</td>
+				<td><select id="add_location_type" style="width: 145px;"
+					onchange="checkLocationType();">
+						<!--option value="" disabled="disabled" selected="selected">Please choose..</option-->
+						<option th:each="type : ${locationTypeList}" th:value="${type}"
+							th:text="${type}"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Code Changed:</td>
+				<td><input type="checkbox" id="add_location_codeChanged"
+					onchange="checkCodeChange();" disabled="disabled" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Opening Date:</td>
+				<td><input type="text" id="add_location_openingDate"
+					placeholder="dd/mm/yyyy"
+					pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d"
+					required="required" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Remark:</td>
+				<td><input type="text" id="add_location_remark"
+					style="width: 140px; font-family: myanmar3;" /></td>
+			</tr>
+			<tr id="code-check">
+				<td colspan="2"><span id="new_edit_table" class="show">
+						<fieldset>
+							<!--style="min-height:250px;overflow:auto;"-->
+							<legend style="color: gray;">Stock List</legend>
+							<div align="center">
+								<table width="100%" id="add-location-stock-table"
+									style="border-collapse: collapse;" border="1">
+									<tr>
+										<td><span>Product Code</span></td>
+										<!--  <td><span>Alternate Product Code</span></td>-->
+										<td><span>Product Name</span></td>
+										<td><span>Price</span></td>
+										<td><span>Quantity</span></td>
+										<td><span>Total</span> <select
+											id="add_location_product_name_lst" style="width: 145px;"
+											class="hide">
+												<option th:each="product: ${productList}"
+													th:value="${product.name}" th:text="${product.name}"></option>
+										</select> <select id="add_location_product_price_lst"
+											style="width: 145px;" class="hide">
+												<option th:each="product: ${productList}"
+													th:value="${product.price}" th:text="${product.price}"></option>
+										</select> <datalist id="add_location_productList">
+												<option th:each="product: ${productList}"
+													th:value="${product.getProductCode()}"
+													th:text="${product.getProductCode()}"></option>
+											</datalist>
+											<select id="location_product_boId" disabled="disabled"	class="hide">
+												<option th:each="product : ${productList}" 	th:value="${product.boId}" th:text="${product.boId}">214</option>
+											</select>
+											
+											</td>
+										<td><input type="button" id="add-product-button"
+											onclick="addRow('add-location-stock-table');" value="+" /></td>
+
+									</tr>
+									<tr class="add-location-productRow" valign="middle"
+										id="new-product" style="display: none;">
+										<td><input name="add-location-product-boId"
+											id="add_location_product" type="search"
+											list="add_location_productList"
+											onkeypress="return getProductInformation(event,this);" />
+											<input type="text" name="add_location_productcode" class="hide" /></td>
+										
+										<td><span name="add_location_product_name"></span></td>
+										<td><span name="add_location_product_price"></span></td>
+										<td><span><input type="number"
+												name="add_location_product_qty"
+												onkeyup="checkTotalKeyUp(event,this);"
+												onkeypress="return checkEnterKey(event,this);" /></span></td>
+										<td><span name="add_location_product_amount"></span></td>
+										<td><input type="button" value="-"
+											onclick="removeRow(this);"></input></td>
+									</tr>
+								</table>
+							</div>
+							<div align="center">
+								<table>
+									<tr>
+										<td></td>
+									</tr>
+									<tr>
+									</tr>
+									<tr>
+									</tr>
+								</table>
+							</div>
+							<div align="right">
+								<table>
+									<tr>
+										<td colspan="3">Total Quantity</td>
+										<td id="totalLocation-Qty"></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td colspan="3">Total Amount</td>
+										<td id="totalLocation-Amount"></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+						</fieldset>
+				</span></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="Save" id="add-newform-save" /> <input type="button"
+					value="Cancel" id="add-newform-cancel"
+					onclick="document.getElementById('dialog-temp').className='hide';" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<div th:if="${type=='VOLUMEPRODUCT'}" id="volumeproductnewform_table">
+	<form action="javascript:addNewVolumeProduct('contentNew');"
+		id="new_volume_product_form">
+		<table th:if="${product!='INVALID'}" class="newform-table"
+			id="newproductForm" align="center">
+			<col width="150px" />
+			<col width="250px" />
+			<tr>
+				<td colspan="2">
+					<h3 align="center">
+						<span id="product_header">New Volume Product Form</span>
+					</h3>
+				</td>
+			</tr>
+			<tr>
+				<td class="detail-description">Code:</td>
+				<td><input type="text" name="product" id="add_product_code" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Name:</td>
+				<td><input type="text" id="add_product_name"
+					style="width: 140px; font-family: myanmar3;" /></td>
+			</tr>
+			<tr>
+				<td class="detail-description">Discounted:</td>
+				<td><input type="checkbox" id="add_product_discounted" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<table id="volumeproduct" class="detail-sales"
+						style="border-collapse: collapse;" border="1">
+						<col width="150px" />
+						<col width="150px" />
+						<col width="150px" />
+						<col width="150px" />
+						<tr>
+							<th>Minimum</th>
+							<th>Maximum</th>
+							<th>Price</th>
+							<td><input type="button" id="btnInsert"
+								onclick="addVolumeRow('volumeproduct');" value="+" /></td>
+						</tr>
+						<tr class="hide" id="add_volume">
+							<td><input type="text" id="volumeproduct_min" value="0" /></td>
+							<td><input type="text" id="volumeproduct_max" value="0" /></td>
+							<td><input type="text" id="volumeproduct_price" value="0"
+								onkeypress="return checkVolumePriceEnterKey(event);" /></td>
+							<td><input type="button" value="-"
+								onclick="removeSalesRow(this);" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="Save" id="add-newform-save" /> <input type="button"
+					value="Cancel" id="add-newform-cancel"
+					onclick="document.getElementById('dialog-temp').className='hide';" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

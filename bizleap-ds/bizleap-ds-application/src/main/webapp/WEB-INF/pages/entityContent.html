@@ -1,0 +1,16 @@
+<div id="entity-content">
+	<table class="content-table" id="content-table">
+		<tr th:if="${type=='EMPLOYEE'}" th:each="employee : ${employeeList}"
+			onclick="aboutDetail(this,'EMPLOYEE');" th:attr="id=${employee.boId}">
+			<td><img th:src="@{/resources/img/profile.png}" width="50"></img></td>
+			<td> <span th:text="${employee.name}">Aye</span><br /> <span
+				th:text="${employee.boId}" style="font-family: sarif;"></span></td>
+		</tr>
+		<tr th:if="${type=='COMPANY'}" th:each="company : ${companyList}"
+			onclick="aboutDetail(this,'COMPANY');" th:attr="id=${company.boId}">
+			<td>&nbsp;</td>
+			<td><span th:text="${company.name}">Mingalardon</span><br /> <span
+				th:text="${company.boId}" style="font-family: sarif;"></span></td>
+		</tr>
+		</table>
+</div>
